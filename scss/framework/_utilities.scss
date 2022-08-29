@@ -1,0 +1,45 @@
+@each $name, $hex in $colors {
+	.text-#{$name}, .hover\:text-#{$name} {
+		color: $hex;
+	}
+
+	.bg-#{$name}, .hover\:bg-#{$name} {
+		color: $hex;
+	}
+}
+
+@each $size, $px in $font-sizing {
+	.text-#{$size}{
+		font-size: $px;
+	}
+}
+
+@for $i from 1 to 13 {
+	$spacing: $i * 4px;
+
+	.mt-#{$i} {
+		margin-top: $spacing;
+	}
+	.mb-#{$i} {
+		margin-bottom: $spacing;
+	}
+
+	.pt-#{$i} {
+		padding-top: $spacing;
+	}
+	.pb-#{$i} {
+		padding-bottom: $spacing;
+	}
+
+	.gap-#{$i} {
+		gap: $spacing;
+	}
+
+	.x-gap-#{$i} {
+		column-gap: $spacing;
+	}
+
+	.y-gap-#{$i} {
+		row-gap: $spacing;
+	}
+}

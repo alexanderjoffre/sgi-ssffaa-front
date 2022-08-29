@@ -1,0 +1,28 @@
+* {
+	&, &:is(::before, ::after) {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: map-get($fonts, 'regular'), sans-serif;
+	font-size: map-get($font-sizing, 'md');
+
+	#__next {
+		min-height: 100vh;
+		
+		display: flex;
+		flex-direction: column;
+	}
+
+	main { flex-grow: 1; }
+}
+
+ul {
+	list-style: none;
+}
