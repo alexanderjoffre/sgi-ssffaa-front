@@ -1,11 +1,12 @@
-export interface IIntlStrategy {
-	language: string;
-	dateFormat: string;
-	moneyName: string;
-	countryName: string;
-	countryShortName: string;
+import { IIntlText } from "./IntlText.interface";
 
-	phone(value: number): string;
+export interface IIntlStrategy {
+	readonly languageCode: string;
+	readonly languageName: string;
+	readonly dateFormat: string;
+	readonly text: IIntlText;
+
 	number(value: number): string;
 	money(value: number): string;
+
 }
