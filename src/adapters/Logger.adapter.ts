@@ -19,7 +19,8 @@ export class LoggerAdapter {
 				created_at: dateAdapter.nowUTC(),
 			},
 			transports: [
-				new this._winston.transports.Console()
+				new this._winston.transports.File({ filename: 'error.log', level: 'error' }),
+				new this._winston.transports.File({ filename: 'system.log' }),
 			]
 		})
 	}
