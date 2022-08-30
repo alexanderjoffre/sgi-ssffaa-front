@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	font-family: map-get($fonts, 'regular'), sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: map-get($font-sizing, 'md');
 
 	#__next {

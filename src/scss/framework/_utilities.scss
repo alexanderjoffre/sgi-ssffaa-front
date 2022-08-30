@@ -14,7 +14,7 @@
 	}
 }
 
-@for $i from 1 to 13 {
+@for $i from 1 to 24 {
 	$spacing: $i * 4px;
 
 	.mt-#{$i} {
@@ -34,12 +34,20 @@
 	.gap-#{$i} {
 		gap: $spacing;
 	}
-
 	.x-gap-#{$i} {
 		column-gap: $spacing;
 	}
-
 	.y-gap-#{$i} {
 		row-gap: $spacing;
+	}
+
+	.w-#{$i} {
+		width: $spacing;
+	}
+	.max-w-#{$i} {
+		max-width: $spacing;
+	}
+	.min-w-#{$i} {
+		min-width: $spacing;
 	}
 }
