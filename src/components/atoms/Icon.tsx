@@ -2,13 +2,13 @@ import ReactMdi from '@mdi/react';
 import * as mdi from '@mdi/js';
 import { EIcon } from '../../typescript/enums/Icon.enum';
 
-interface IIconProps {
+export interface IIconProps {
 	css?: string;
 	icon: EIcon;
 }
 
 export const Icon = (props: IIconProps) => (
-	<ReactMdi className={ props.css ?? '' }
+	<ReactMdi className={ props.css ?? 'w-6' }
 		path={ icons.get(props.icon) }
 	/>
 );

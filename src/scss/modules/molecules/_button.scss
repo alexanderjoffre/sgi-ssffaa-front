@@ -1,0 +1,56 @@
+.btn {
+	@extend .flex-center-between, .gap-2,
+					.py-3, .px-4, 
+					.text-md, .text-snow;
+
+	border: none;
+	border-radius: 8px;	
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&--primary {
+		background-color: map-get($colors, 'primary' );
+		
+		&:hover {
+			background-color: darken(
+				map-get($colors, 'primary' ), 8
+			);
+		}
+	}
+
+	&--success {
+		background-color: map-get($colors, 'success' );
+		
+		&:hover {
+			background-color: darken(
+				map-get($colors, 'success' ), 8
+			);
+		}
+	}
+
+	&--warning {
+		background-color: map-get($colors, 'warning' );
+		
+		&:hover {
+			background-color: darken(
+				map-get($colors, 'warning' ), 8
+			);
+		}
+	}
+
+	&--danger {
+		background-color: map-get($colors, 'danger' );
+		
+		&:hover {
+			background-color: darken(
+				map-get($colors, 'danger' ), 8
+			);
+		}
+	}
+
+	&__text {
+		white-space: nowrap;
+	}
+}

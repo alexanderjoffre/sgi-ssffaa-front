@@ -20,7 +20,7 @@ export class StoryBookItem {
 		return componentMeta;
 	}
 	
-	public createTemplate(props: any) {
+	public createTemplate<T>(props: T) {
 		type ComponentStoryType = ComponentStory<typeof this.component>;
 
 		const template: ComponentStoryType = (props) => <this.component {...props} />;

@@ -1,4 +1,4 @@
-import { Icon } from '../components/atoms/Icon';
+import { Icon, IIconProps } from '../components/atoms/Icon';
 import { EIcon } from '../typescript/enums/Icon.enum';
 import { StoryBookItem } from '../helpers/StoryBookItem.helper';
 
@@ -11,5 +11,5 @@ export default storybookItem.createMetadata( 'atoms/Icon', {
   }
 });
 
-export const Account = storybookItem.createTemplate({ css, icon: EIcon.ACCOUNT });
-export const Close = storybookItem.createTemplate({ css, icon: EIcon.CLOSE });
+export const Account = storybookItem.createTemplate<IIconProps>({ css, icon: EIcon.ACCOUNT });
+export const Close = storybookItem.createTemplate<IIconProps>({ css, icon: EIcon.CLOSE });

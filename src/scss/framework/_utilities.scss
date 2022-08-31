@@ -23,12 +23,23 @@
 	.mb-#{$i} {
 		margin-bottom: $spacing;
 	}
+	.my-#{$i} {
+		@extend .mt-#{$i}, .mb-#{$i};
+	}
+
 
 	.pt-#{$i} {
 		padding-top: $spacing;
 	}
 	.pb-#{$i} {
 		padding-bottom: $spacing;
+	}
+	.py-#{$i} {
+		@extend .pt-#{$i}, .pb-#{$i};
+	}
+	.px-#{$i} {
+		padding-left: $spacing;
+		padding-right: $spacing;
 	}
 
 	.gap-#{$i} {

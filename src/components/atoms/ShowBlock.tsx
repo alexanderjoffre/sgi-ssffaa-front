@@ -4,9 +4,9 @@ interface IShowBlockProps {
 	if: boolean;
 
 	// Component to be render
-	Component: (props: any) => JSX.Element;
+	Component: JSX.Element;
 }
 
 export const ShowBlock = (props: IShowBlockProps): JSX.Element => (
-	props.if ? <props.Component {...props} /> : <></>
+	props.if ? props.Component : <></>
 )
