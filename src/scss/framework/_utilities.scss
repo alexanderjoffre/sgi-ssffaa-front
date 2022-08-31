@@ -14,7 +14,7 @@
 	}
 }
 
-@for $i from 1 to 24 {
+@for $i from 1 to 25 {
 	$spacing: $i * 4px;
 
 	.mt-#{$i} {

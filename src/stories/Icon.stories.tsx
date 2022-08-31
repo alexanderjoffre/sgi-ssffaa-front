@@ -1,21 +1,15 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { Icon } from '../components/atoms/Icon';
 import { EIcon } from '../typescript/enums/Icon.enum';
-import { enumToStorybookSelectControl } from '../helpers/enum.helper';
+import { StoryBookItem } from '../helpers/StoryBookItem.helper';
 
-export default {
-  title: 'atoms/Icon',
-  component: Icon,
-  args: { 
-    icon: EIcon.ACCOUNT 
-  },
+const css = 'w-20';
+const storybookItem = new StoryBookItem(Icon);
+
+export default storybookItem.createMetadata( 'atoms/Icon', {
   argTypes: {
-    icon: enumToStorybookSelectControl(EIcon)
+    icon: StoryBookItem.makeSelectControl(EIcon)
   }
-} as ComponentMeta<typeof Icon>;
+});
 
-const Template: ComponentStory<typeof Icon> = (args) => <Icon css='max-w-20' {...args} />;
-
-export const Account = Template.bind({ icon: EIcon.ACCOUNT });
+export const Account = storybookItem.createTemplate({ css, icon: EIcon.ACCOUNT });
+export const Close = storybookItem.createTemplate({ css, icon: EIcon.CLOSE });

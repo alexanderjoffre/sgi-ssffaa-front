@@ -15,4 +15,5 @@ export const Icon = (props: IIconProps) => (
 
 const icons: Map<string, any> = new Map([
 	[EIcon.ACCOUNT, mdi.mdiAccount],
+	[EIcon.CLOSE, mdi.mdiClose],
 ]);

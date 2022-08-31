@@ -1,3 +1,4 @@
 export enum EIcon {
-	ACCOUNT = 'account',
+	ACCOUNT='ACCOUNT',
+	CLOSE='CLOSE',
 }
