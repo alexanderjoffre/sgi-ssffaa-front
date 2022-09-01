@@ -3,6 +3,7 @@ export enum EIcon {
 	ACCOUNT='ACCOUNT',
 	CHECK='CHECK',
 	CLOSE='CLOSE',
-	SEARCH='SEARCH',
 	DELETE='DELETE',
+	EYE='EYE',
+	SEARCH='SEARCH',
 }

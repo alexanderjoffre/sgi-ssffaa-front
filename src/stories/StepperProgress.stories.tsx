@@ -5,7 +5,7 @@ import { StoryBookItem } from '../helpers/StoryBookItem.helper';
 const storybookItem = new StoryBookItem(StepperProgress);
 
 export default storybookItem.createMetadata( 
-  'molecules/Stepper', 
+  'molecules/Stepper Progress', 
   'Let\'s developers to create multi stage forms',
   {
     argTypes: {

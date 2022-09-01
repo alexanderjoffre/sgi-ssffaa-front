@@ -8,6 +8,7 @@ export interface IInputText {
 	label?: string;
 	placeholder?: string;
 	belowText?: string;
+	type: 'text' | 'password';
 	belowTextType?: 'success' | 'danger';
 	prefix?: EIcon;
 	sufix?: EIcon;
@@ -30,7 +31,7 @@ export const InputText = (props: IInputText) => {
 					Component={<Icon icon={props.prefix ?? EIcon.NONE} css='input-text__icon'/>} 
 				/>
 
-				<input type="text" className="input-text__input"
+				<input type={props.type} className="input-text__input"
 					value={props.value}
 					placeholder={props.placeholder}
 					onChange={props.onChange}

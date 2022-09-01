@@ -2,12 +2,12 @@ import { InputText, IInputText } from '../components/molecules/InputText';
 import { EIcon } from '../typescript/enums/Icon.enum';
 import { StoryBookItem } from '../helpers/StoryBookItem.helper';
 
-const inputSettings = { value: '', placeholder: 'Quick search'};
+const inputSettings = { value: 'user@domain.com', placeholder: 'Quick search'};
 const storybookItem = new StoryBookItem(InputText);
 
 export default storybookItem.createMetadata( 
-  'molecules/InputText', 
-  'Input for typing strings and numbers',
+  'molecules/Input Text', 
+  'Input for typing texts and password',
   {
     argTypes: {
       prefix: StoryBookItem.makeSelectControl(EIcon),
@@ -17,25 +17,29 @@ export default storybookItem.createMetadata(
 );
 
 export const WithValue = storybookItem.createTemplate<IInputText>(
-  { value: 'This is the input value', sufix: EIcon.SEARCH }
+  { ...inputSettings, type: 'text', sufix: EIcon.SEARCH }
+);
+
+export const Password = storybookItem.createTemplate<IInputText>(
+  { ...inputSettings, type: 'password', label: 'Password' }
 );
 
 export const WithLabel = storybookItem.createTemplate<IInputText>(
-  { ...inputSettings, label: 'Search' }
+  { ...inputSettings, type: 'text', label: 'Search' }
 );
 
 export const WithBelowMessage = storybookItem.createTemplate<IInputText>(
-  { value: 'user@domain.com', belowText: 'User already registered', label: 'User' }
+  { ...inputSettings, type: 'text', belowText: 'User already registered', label: 'User' }
 );
 
 export const WithBelowSuccessMessage = storybookItem.createTemplate<IInputText>(
-  { value: 'user@domain.com', belowText: 'User already registered', label: 'User', belowTextType: 'success' }
+  { ...inputSettings, type: 'text', belowText: 'User already registered', label: 'User', belowTextType: 'success' }
 );
 
 export const WithBelowErrorMessage = storybookItem.createTemplate<IInputText>(
-  { value: 'user@domain.com', belowText: 'User already registered', label: 'User', belowTextType: 'danger' }
+  { ...inputSettings, type: 'text', belowText: 'User already registered', label: 'User', belowTextType: 'danger' }
 );
 
 export const WithSuffixIcon = storybookItem.createTemplate<IInputText>(
-  { ...inputSettings, sufix: EIcon.SEARCH }
+  { ...inputSettings, type: 'text', sufix: EIcon.SEARCH }
 );

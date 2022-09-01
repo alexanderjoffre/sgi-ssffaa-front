@@ -5,7 +5,7 @@ import { StoryBookItem } from '../helpers/StoryBookItem.helper';
 const storybookItem = new StoryBookItem(ProgressBar);
 
 export default storybookItem.createMetadata( 
-  'molecules/ProgressBar', 
+  'molecules/Progress Bar', 
   'Show the percentage progress based on current and max value  as numbers',
   {
     argTypes: {

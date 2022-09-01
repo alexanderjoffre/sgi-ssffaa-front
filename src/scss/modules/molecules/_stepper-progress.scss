@@ -1,5 +1,5 @@
 .stepper-progress {
-	@extend .flex-stretch-start, .flex-col, .gap-6;
+	@extend .flex-stretch-start, .flex-col, .gap-10;
 
 	&__stage-info {
 		@extend .flex-center-between, .gap-4;

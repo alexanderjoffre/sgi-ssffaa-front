@@ -18,5 +18,6 @@ const icons: Map<string, any> = new Map([
 	[EIcon.CHECK, mdi.mdiCheckCircleOutline],
 	[EIcon.CLOSE, mdi.mdiClose],
 	[EIcon.DELETE, mdi.mdiTrashCan],
+	[EIcon.EYE, mdi.mdiEye],
 	[EIcon.SEARCH, mdi.mdiMagnify],
 ]);
