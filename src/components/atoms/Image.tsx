@@ -1,10 +1,7 @@
-import NextImage from 'next/image';
-
-export interface IImage {
+export interface IImageProps {
 	src: string;
-	alt?: string;
 }
 
-export const Image = (props: IImage) => (
-	<NextImage {...props}	layout='responsive' />
+export const Image = (props: IImageProps) => (
+	<img className="image" src={props.src} loading="lazy" />
 );

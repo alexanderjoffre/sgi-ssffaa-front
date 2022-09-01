@@ -1,9 +1,14 @@
 @import './base/fonts';
 @import './base/variables';
+@import './base/mixins';
 
 @import './framework/resets';
-@import './framework/utilities';
+@import './framework/layout';
 @import './framework/flex';
+@import './framework/utilities';
+
+@import './modules/atoms/card';
+@import './modules/atoms/image';
 
 @import './modules/molecules/button';
 @import './modules/molecules/input-text';

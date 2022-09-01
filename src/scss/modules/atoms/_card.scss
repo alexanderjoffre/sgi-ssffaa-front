@@ -1,0 +1,8 @@
+.card {
+	@extend .p-5;
+	@include shadow('deep-blue');	
+
+	&--rounded {
+		border-radius: 8px;
+	}
+}

@@ -17,6 +17,10 @@
 @for $i from 1 to 25 {
 	$spacing: $i * 4px;
 
+	.m-#{$i} {
+		margin: $spacing;
+	}
+
 	.mt-#{$i} {
 		margin-top: $spacing;
 	}
@@ -27,6 +31,10 @@
 		@extend .mt-#{$i}, .mb-#{$i};
 	}
 
+
+	.p-#{$i} {
+		padding: $spacing;
+	}
 
 	.pt-#{$i} {
 		padding-top: $spacing;
