@@ -1,3 +1,4 @@
 export interface IHasUuid {
-	uuid: string
+	uuid: string;
+	[key: string]: any;
 }

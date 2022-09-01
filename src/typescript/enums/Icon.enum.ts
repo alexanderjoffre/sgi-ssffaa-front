@@ -1,5 +1,8 @@
 export enum EIcon {
 	NONE='',
 	ACCOUNT='ACCOUNT',
+	CHECK='CHECK',
 	CLOSE='CLOSE',
+	SEARCH='SEARCH',
+	DELETE='DELETE',
 }

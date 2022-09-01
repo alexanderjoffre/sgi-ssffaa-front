@@ -8,13 +8,24 @@ export class StoryBookItem {
 		this.component = component;
 	}
 
-	public createMetadata(title: string, metadata: ComponentMeta<typeof this.component>) {
+	public createMetadata(
+		title: string, 
+		componentDescription: string, 
+		metadata: ComponentMeta<typeof this.component>
+	) {
 		type StoryMetaType = ComponentMeta<typeof this.component>;
 
 		const componentMeta: StoryMetaType = {
 			...metadata,
 			title,
 			component: this.component,
+			parameters: {
+				docs: {
+					description: {
+						component: componentDescription,
+					},
+				},
+			}
 		};
 
 		return componentMeta;
@@ -24,7 +35,6 @@ export class StoryBookItem {
 		type ComponentStoryType = ComponentStory<typeof this.component>;
 
 		const template: ComponentStoryType = (props) => <this.component {...props} />;
-		template.bind({});
 		template.args = props;
 
 		return template;
@@ -37,7 +47,7 @@ export class StoryBookItem {
 			control: {
 				type: 'select',
 				labels: Object.values(data)
-			}
+			},
 		}
 	};
 

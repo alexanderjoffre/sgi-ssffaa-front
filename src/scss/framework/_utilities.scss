@@ -4,7 +4,7 @@
 	}
 
 	.bg-#{$name}, .hover\:bg-#{$name} {
-		color: $hex;
+		background-color: $hex;
 	}
 }
 
@@ -33,6 +33,12 @@
 	}
 	.pb-#{$i} {
 		padding-bottom: $spacing;
+	}
+	.pl-#{$i} {
+		padding-left: $spacing;
+	}
+	.pr-#{$i} {
+		padding-right: $spacing;
 	}
 	.py-#{$i} {
 		@extend .pt-#{$i}, .pb-#{$i};

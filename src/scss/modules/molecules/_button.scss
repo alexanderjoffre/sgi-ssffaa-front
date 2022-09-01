@@ -1,7 +1,7 @@
 .btn {
 	@extend .flex-center-between, .gap-2,
 					.py-3, .px-4, 
-					.text-md, .text-snow;
+					.text-md;
 
 	border: none;
 	border-radius: 8px;	
@@ -10,8 +10,17 @@
 		cursor: pointer;
 	}
 
+	&--link {
+		@extend .text-primary;
+		background-color: transparent;
+
+		&:hover {
+			@extend .bg-snow;
+		}
+	}
+
 	&--primary {
-		background-color: map-get($colors, 'primary' );
+		@extend .text-snow, .bg-primary;
 		
 		&:hover {
 			background-color: darken(
@@ -21,7 +30,7 @@
 	}
 
 	&--success {
-		background-color: map-get($colors, 'success' );
+		@extend .text-snow, .bg-success;
 		
 		&:hover {
 			background-color: darken(
@@ -31,7 +40,7 @@
 	}
 
 	&--warning {
-		background-color: map-get($colors, 'warning' );
+		@extend .text-snow, .bg-warning;
 		
 		&:hover {
 			background-color: darken(
@@ -41,7 +50,7 @@
 	}
 
 	&--danger {
-		background-color: map-get($colors, 'danger' );
+		@extend .text-snow, .bg-danger;
 		
 		&:hover {
 			background-color: darken(
@@ -51,6 +60,9 @@
 	}
 
 	&__text {
+		@extend .flex-center-start ;
+
+		height: 24px;
 		white-space: nowrap;
 	}
 }

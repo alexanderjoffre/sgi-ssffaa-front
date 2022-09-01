@@ -3,11 +3,11 @@ import { Icon } from "../atoms/Icon";
 import { ShowBlock } from "../atoms/ShowBlock";
 
 export interface IButtonProps {
-	text: string,
-	prefix?: EIcon,
-	sufix?: EIcon,
-	type: 'primary' | 'danger' | 'success' | 'warning',
-	onClick(): void
+	text: string;
+	prefix?: EIcon;
+	sufix?: EIcon;
+	type: 'primary' | 'danger' | 'success' | 'warning' | 'link';
+	onClick(): void;
 }
 
 export const Button = (props: IButtonProps) => (
