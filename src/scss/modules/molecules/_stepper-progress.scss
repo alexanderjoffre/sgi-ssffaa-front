@@ -1,0 +1,17 @@
+.stepper-progress {
+	@extend .flex-stretch-start, .flex-col, .gap-6;
+
+	&__stage-info {
+		@extend .flex-center-between, .gap-4;
+	}
+
+	&__stage-text {
+		@extend .mt-2, .text-cool-gray;
+		display: block;
+		font-size: map-get($font-sizing, 'sm' );
+	}
+
+	&__buttons {
+		@extend .flex-center-end, .gap-4;
+	}
+}

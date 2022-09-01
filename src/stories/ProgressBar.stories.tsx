@@ -6,7 +6,7 @@ const storybookItem = new StoryBookItem(ProgressBar);
 
 export default storybookItem.createMetadata( 
   'molecules/ProgressBar', 
-  'ProgressBar component let\'s developers to create multi stage forms',
+  'Show the percentage progress based on current and max value  as numbers',
   {
     argTypes: {
       prefix: StoryBookItem.makeSelectControl(EIcon),

@@ -1,6 +1,11 @@
 .progressbar {
 	@extend .flex-center-start, .gap-2;
 
+	&__indicator {
+		@extend .text-cool-gray;
+		font-size: map-get($font-sizing, 'sm' );
+	}
+
 	&__bar {
 		flex-grow: 1;
 		height: 8px;

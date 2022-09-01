@@ -3,7 +3,7 @@ import { ShowBlock } from "./ShowBlock";
 export interface IProgressBarProps {
 	currentValue: number;
 	maxValue: number;
-	fillColor?: | 'success' | 'warning' | 'danger';
+	fillColor?: 'info' | 'success' | 'warning' | 'danger';
 	showIndicatorAt?: 'start' | 'end';
 }
 
@@ -12,9 +12,9 @@ export const ProgressBar = (props: IProgressBarProps) => {
 	const indicator = `${progress}%`;
 	
 	return (
-		<div className={`progressbar ${(props.showIndicatorAt === 'end' ? 'flex-row-reverse' : 'flex-row')}`}>
+		<div className={`progressbar flex-row-${(props.showIndicatorAt === 'end' ? 'reverse' : '')}`}>
 			<ShowBlock if={!!props.showIndicatorAt} 
-				Component={<label>{indicator}</label>}
+				Component={<label className="progressbar__indicator">{indicator}</label>}
 			/>
 			<div className="progressbar__bar">
 				<div className={`progressbar__bar-fill bg-${props.fillColor ?? 'primary'}`} 
