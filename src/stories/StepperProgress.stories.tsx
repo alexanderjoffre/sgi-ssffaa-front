@@ -23,7 +23,7 @@ const TestComponent = ({name}: ITestComponent) => (
 const stageOne: IStepperProgressStage<ITestComponent> = {
 	name: 'First',
 	Component: TestComponent,
-	commponentProps: { name: 'This is the first stage' },
+	commponentProps: { name: 'This is the first stage'},
   nextButtonText: 'Go to Second',
 }
 

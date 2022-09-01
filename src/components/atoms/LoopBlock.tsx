@@ -13,4 +13,4 @@ export const LoopBlock = ({list, Component}: ILoopBlockProps): JSX.Element => (
 	<>
 		{ list.map(item => <Component key={item.uuid} {...item}/>) }
 	</>
-)
+);
