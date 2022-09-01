@@ -1,0 +1,15 @@
+.progressbar {
+	@extend .flex-center-start, .gap-2;
+
+	&__bar {
+		flex-grow: 1;
+		height: 8px;
+		border: 1px solid map-get($colors, 'gray' );
+		border-radius: 4px;
+	}
+
+	&__bar-fill {
+		height: 100%;
+		transition: width .2s ease-in-out;
+	}
+}
