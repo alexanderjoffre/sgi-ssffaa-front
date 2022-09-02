@@ -1,3 +1,7 @@
+.circle {
+	border-radius: 50%;
+}
+
 @each $name, $hex in $colors {
 	.text-#{$name}, .hover\:text-#{$name} {
 		color: $hex;
@@ -74,5 +78,15 @@
 	}
 	.min-w-#{$i} {
 		min-width: $spacing;
+	}
+
+	.h-#{$i} {
+		height: $spacing;
+	}
+	.max-h-#{$i} {
+		max-height: $spacing;
+	}
+	.min-h-#{$i} {
+		min-height: $spacing;
 	}
 }
