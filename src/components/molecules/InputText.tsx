@@ -48,11 +48,11 @@ export const InputText = (props: IInputText) => {
 			</div>
 
 			<ShowBlock if={!!props.label} Component={
-					<span className={
-						`input-text__below-text text-${props.belowTextType ?? 'gray'}`
-					}>
-						{props.belowText}
-					</span>
+				<span className={
+					`input-text__below-text text-${props.belowTextType ?? 'gray'}`
+				}>
+					{props.belowText}
+				</span>
 			} />
 
 		</div>
