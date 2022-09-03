@@ -1,0 +1,10 @@
+.action-button {
+	@extend .flex-center-center;
+
+	min-width: 38px;
+	min-height: 38px;
+
+	&__icon {
+		@extend .text-cool-gray;
+	}
+}
