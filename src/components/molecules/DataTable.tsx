@@ -4,7 +4,8 @@ import { Icon } from "../atoms/Icon";
 import { LoopBlock } from "../atoms/LoopBlock";
 import { EIcon } from '../../typescript/enums/Icon.enum'
 import { createContext, useContext, useState } from "react";
-import { addColors } from "winston/lib/winston/config";
+import { InputText } from "./InputText";
+import { Pagination } from "./Pagination";
 
 interface IDataTableColumn extends IHasUuid {
 	attribute: string;
@@ -30,25 +31,54 @@ const getColumnWidths = (columns: IDataTableColumn[]) => {
 }
 
 export const DataTable = (props: IDataTableProps) => {
-	const [data, setData] = useState<IHasUuid[]>(props.data);
+	const data: IHasUuid[] = props.data;
+	const [filteredData, setFilteredData] = useState<IHasUuid[]>(props.data);
+	const [filter, setFilter] = useState<string>('');
 
 	const context = { 
-		data, 
+		data: filteredData, 
 		setData: (tableData: IHasUuid[]) => {
-			setData([...tableData])
+			setFilteredData([...tableData])
 		}
 	};
+
+	useEffect(() => {
+		const results: IHasUuid[] = data.filter( ({uuid, ...recordWithoutUuid}) => {
+			const dataValues: string = Object.values(recordWithoutUuid).join(',');
+
+			const filtrosInput: string[] = filter.split(',');
+			
+			return filtrosInput.every(
+				(filter: string) => dataValues.match(new RegExp(filter.trim(), 'ig'))
+			);
+		})
+
+		setFilteredData(results);
+	}, [filter]);
 
 	return (
 		<TableContext.Provider value={context}>
 			<div className="data-table">
+				<div className="data-table__table-actions">
+					<InputText type="text"
+					value={filter}
+					placeholder="Quick filters"
+					sufix={EIcon.SEARCH}
+					onChange={(event) => setFilter(event.target.value)}
+					/>
+				</div>
+
 				<div className="data-table__heading grid"
 				style={{ gridTemplateColumns: getColumnWidths(props.columns) }}
 				>
 					<LoopBlock list={props.columns} Component={DataTableHeadingCell} />
 				</div>
 				<div>
-					<DataTableRows columns={props.columns} data={data} />
+					<DataTableRows columns={props.columns} data={filteredData} />
+				</div>
+
+				<div className="data-table__table-pages">
+					<Pagination pageCount={1} onChange={() => {}} />
 				</div>
 			</div>
 		</TableContext.Provider>

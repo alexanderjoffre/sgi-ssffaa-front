@@ -12,8 +12,8 @@ export interface IInputText {
 	belowTextType?: 'success' | 'danger';
 	prefix?: EIcon;
 	sufix?: EIcon;
-	onChange?: () => void;
-	onBlur?: () => void;
+	onChange: (event: any) => void;
+	onBlur?: (event: any) => void;
 }
 
 export const InputText = (props: IInputText) => {
@@ -35,9 +35,9 @@ export const InputText = (props: IInputText) => {
 					value={props.value}
 					placeholder={props.placeholder}
 					onChange={props.onChange}
-					onBlur={() => { 
+					onBlur={(event) => { 
 						setIsActive(false); 
-						props.onBlur && props.onBlur();
+						props.onBlur && props.onBlur(event);
 					}}
 					onFocus={() => setIsActive(true)}
 				/>
