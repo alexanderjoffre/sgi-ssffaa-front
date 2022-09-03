@@ -23,7 +23,7 @@ export class ExcelAdapter implements IFileBuffer {
 		return buffer
 	}
 
-	createWorkBook(): Workbook {
+	private createWorkBook(): Workbook {
 		const workbook: Workbook = new this._xlsxLibrary.Workbook();
 		workbook.created = new Date();
 		workbook.creator = 'www.mycompany.com';
@@ -34,36 +34,29 @@ export class ExcelAdapter implements IFileBuffer {
 		return workbook;
 	}
 
-	createWorkSheet(workbook: Workbook, sheet: IExcelSheet): Worksheet {
+	private createWorkSheet(workbook: Workbook, sheet: IExcelSheet): Worksheet {
+		const columnMaxWidth = 80
 		const worksheet: Worksheet = workbook.addWorksheet(sheet.name);
-
-		worksheet.addTable({
-			name: `table-${sheet.name}`,
-			ref: 'A1',
-			headerRow: true,
-			style: {
-				showRowStripes: true,
-			},
-			columns: sheet.headers.map( h => ({
-				name: h,
-				filterButton: true
-			})),
-			rows: sheet.data.map( 
-				(record: any) => Object.values(record)
-			),
+		const sheetData = sheet.data.map( (record) => {
+			const { uuid, ...attributtes } = record;
+			return Object.values(attributtes)
 		});
 
-		// Set all columns width
-		sheet.headers.forEach( (header, index) => {
-			const col = worksheet.getColumn(index+1)
-			const maxWidth = 80
+		worksheet.columns = sheet.headers.map( (header: string, headerIndex: number) => {
 
 			const dataLength = Math.max(...[
 				`${header}`.length,
-				...sheet.data.map( (record: any) => `${record[index]}`.length )
+				...sheetData.map( (record: any) => `${record[headerIndex]}`.length )
 			])
-			
-			col.width = (dataLength > maxWidth ? maxWidth : dataLength) + 4
+
+			return {
+				header,
+				width: (dataLength > columnMaxWidth ? columnMaxWidth : dataLength) + 4
+			}
+		});
+
+		sheetData.forEach( (record, recordIdx) => {
+			worksheet.insertRow(recordIdx + 2, record);
 		})
 
 		return worksheet;

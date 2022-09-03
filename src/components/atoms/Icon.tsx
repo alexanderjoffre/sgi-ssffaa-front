@@ -20,6 +20,7 @@ const icons: Map<string, any> = new Map([
 	[EIcon.CHECK, mdi.mdiCheckCircleOutline],
 	[EIcon.CLOSE, mdi.mdiClose],
 	[EIcon.DELETE, mdi.mdiTrashCan],
+	[EIcon.EXCEL, mdi.mdiMicrosoftExcel],
 	[EIcon.EYE, mdi.mdiEye],
 	[EIcon.SEARCH, mdi.mdiMagnify],
 	[EIcon.SORT_ALPHABETHICAL, mdi.mdiUnfoldMoreHorizontal],

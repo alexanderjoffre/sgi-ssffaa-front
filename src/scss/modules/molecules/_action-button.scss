@@ -1,10 +1,17 @@
 .action-button {
-	@extend .flex-center-center;
+	@extend .flex-center-center, .bg-snow;
 
 	min-width: 38px;
 	min-height: 38px;
+	border: 1px solid map-get($colors, 'snow' );
+	border-radius: 4px;
+
+	&:hover {
+		border-color: map-get($colors, 'cool-gray' );
+		cursor: pointer;
+	}
 
 	&__icon {
-		@extend .text-cool-gray;
+		@extend .text-cool-gray, .w-6;
 	}
 }

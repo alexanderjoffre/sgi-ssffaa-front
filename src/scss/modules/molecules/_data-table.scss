@@ -1,7 +1,7 @@
 .data-table {
 
-	&__table-actions {
-		@extend .mb-4, .flex-center-end;
+	&__actions {
+		@extend .mb-4, .flex-center-end, .gap-3;
 	}
 
 	&__heading {
