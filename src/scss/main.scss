@@ -5,6 +5,7 @@
 @import './framework/resets';
 @import './framework/layout';
 @import './framework/flex';
+@import './framework/grid';
 @import './framework/utilities';
 
 @import './modules/atoms/card';
@@ -15,3 +16,4 @@
 @import './modules/molecules/input-text';
 @import './modules/molecules/pagination';
 @import './modules/molecules/stepper-progress';
+@import './modules/molecules/data-table';

@@ -22,4 +22,5 @@ const icons: Map<string, any> = new Map([
 	[EIcon.DELETE, mdi.mdiTrashCan],
 	[EIcon.EYE, mdi.mdiEye],
 	[EIcon.SEARCH, mdi.mdiMagnify],
+	[EIcon.SORT_ALPHABETHICAL, mdi.mdiUnfoldMoreHorizontal],
 ]);

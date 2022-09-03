@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import type { NextPage } from 'next';
 import { Layout } from '../src/layouts/Public';
 import { AppContext } from '../src/contexts/App.context';
+import { DataTable } from '../src/components/molecules/DataTable';
+
 
 const Home: NextPage = () => {
   const { language } = useContext(AppContext);

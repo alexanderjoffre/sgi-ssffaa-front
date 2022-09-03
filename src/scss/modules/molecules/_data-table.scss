@@ -1,0 +1,23 @@
+.data-table {
+
+	&__heading {
+		@extend .bg-light-gray;
+		display: grid;
+	}
+
+	&__heading-cell {
+		@extend .flex-center-between,
+						.px-3, .py-4, .text-deep-blue;
+	}
+
+	&__row {
+		border-bottom: 1px solid map-get($colors, 'light-gray');
+		&:hover {
+			background-color: lighten( map-get($colors, 'light-gray'), 3 );
+		}
+	}
+
+	&__cell {
+		@extend .px-3, .py-3, .text-cool-gray;
+	}
+}

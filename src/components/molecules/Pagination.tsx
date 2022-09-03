@@ -4,7 +4,6 @@ import { IHasUuid } from "../../typescript/interfaces/HasUuid.interface";
 import { Icon } from "../atoms/Icon";
 import { LoopBlock } from "../atoms/LoopBlock";
 import { createContext } from "react";
-import { setegid } from "process";
 
 const PaginationContext = createContext({
 	currentPage: 0,
