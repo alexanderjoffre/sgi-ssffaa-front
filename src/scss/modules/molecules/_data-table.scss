@@ -15,15 +15,21 @@
 						.px-3, .py-4, .text-deep-blue;
 	}
 
+	&__heading-sort:hover {
+		cursor: pointer;
+	}
+
 	&__row {
 		border-bottom: 1px solid map-get($colors, 'light-gray');
+
 		&:hover {
 			background-color: lighten( map-get($colors, 'light-gray'), 3 );
 		}
 	}
 
 	&__cell {
-		@extend .px-3, .py-3, .text-cool-gray;
+		@extend .px-3, .py-4, 
+						.text-cool-gray, .text-sm;
 	}
 
 	&__table-pages {

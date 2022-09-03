@@ -6,18 +6,23 @@ import { EIcon } from '../../typescript/enums/Icon.enum'
 import { createContext, useContext, useState } from "react";
 import { InputText } from "./InputText";
 import { Pagination } from "./Pagination";
+import { useDebounce } from "../../hooks/debounce.hooks";
 
 interface IDataTableColumn extends IHasUuid {
 	attribute: string;
 	title?: string;
 	columnWidth?: string;
-	dataAlign?: 'center' | 'end',
+	dataAlign?: 'center' | 'end';
 	format?: (value: any) => string;
 }
 
 export interface IDataTableProps {
-	columns: IDataTableColumn[],
-	data: IHasUuid[]
+	columns: IDataTableColumn[];
+	data: IHasUuid[];
+	recordsPerPage?: number;
+	actionView?: () => void;
+	actionEdit?: () => void;
+	actionDelete?: () => void;
 }
 
 const TableContext = createContext({
@@ -34,10 +39,11 @@ export const DataTable = (props: IDataTableProps) => {
 	const data: IHasUuid[] = props.data;
 	const [filteredData, setFilteredData] = useState<IHasUuid[]>(props.data);
 	const [filter, setFilter] = useState<string>('');
+	const debouncedFilter = useDebounce<string>(filter, 500);
 
 	const context = { 
 		data: filteredData, 
-		setData: (tableData: IHasUuid[]) => {
+		setData: (tableData: IHasUuid[]): void => {
 			setFilteredData([...tableData])
 		}
 	};
@@ -54,7 +60,7 @@ export const DataTable = (props: IDataTableProps) => {
 		})
 
 		setFilteredData(results);
-	}, [filter]);
+	}, [debouncedFilter]);
 
 	return (
 		<TableContext.Provider value={context}>
@@ -151,7 +157,7 @@ const DataTableHeadingCell = (column: IDataTableColumn) => {
 	return (
 		<div className="data-table__heading-cell">
 			<span>{column.title ?? column.attribute}</span>
-			<div onClick={toggleSort}>
+			<div className="data-table__heading-sort" onClick={toggleSort}>
 				<Icon icon={EIcon.SORT_ALPHABETHICAL} />
 			</div>
 		</div>

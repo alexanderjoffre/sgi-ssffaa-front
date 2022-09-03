@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { EIcon } from "../../typescript/enums/Icon.enum";
 import { Icon } from "../atoms/Icon";
 import { ShowBlock } from "../atoms/ShowBlock";
@@ -12,8 +12,8 @@ export interface IInputText {
 	belowTextType?: 'success' | 'danger';
 	prefix?: EIcon;
 	sufix?: EIcon;
-	onChange: (event: any) => void;
-	onBlur?: (event: any) => void;
+	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+	onBlur?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputText = (props: IInputText) => {

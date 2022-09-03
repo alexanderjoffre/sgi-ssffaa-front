@@ -12,6 +12,7 @@ export default storybookItem.createMetadata(
 export const Normal = storybookItem.createTemplate<ICardProps>(
   { children: <p>This is a card</p> }
 );
+
 export const WithRoundedCorners = storybookItem.createTemplate<ICardProps>(
   { children: <p>This is a card with rounded corners</p>, rounded: true }
 );
