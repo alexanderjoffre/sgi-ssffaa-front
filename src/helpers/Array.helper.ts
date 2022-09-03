@@ -14,7 +14,6 @@ export class ArrayHelper {
 				mapper.set( page, data );
 			}
 		);
-		console.log(mapper);
 		return mapper;
 	}
 

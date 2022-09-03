@@ -36,7 +36,7 @@ export const Pagination = (props: IPaginationProps) => {
 	const pages: IHasUuid[] = generatePages(props.pageCount, currentPage);
 
 	const prevPag = () => {
-		if ( currentPage > 1 ) { setCurrentPage(currentPage - 1) }
+		if ( currentPage >= 1 ) { setCurrentPage(currentPage - 1) }
 	};
 
 	const nextPag = () => {

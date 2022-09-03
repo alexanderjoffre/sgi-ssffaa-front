@@ -7,7 +7,7 @@ const datasetName = 'dataset-storybook'
 
 export default storybookItem.createMetadata( 
   'molecules/DataTable', 
-  'Table to perform actions over a data set',
+  'Table to perform actions over a data set. 10 records are displayed per page by default',
   { }
 );
 
@@ -36,6 +36,17 @@ export const RawData = storybookItem.createTemplate<IDataTableProps>({
   data
 });
 
+export const CustomRecordsPerPage = storybookItem.createTemplate<IDataTableProps>({
+  datasetName,
+  recordsPerPage: 5,
+  columns: [
+    { uuid: 'name', attribute: 'name' },
+    { uuid: 'age', attribute: 'age' },
+    { uuid: 'gender', attribute: 'gender' },
+  ],
+  data
+});
+
 export const CustomColumnWidth = storybookItem.createTemplate<IDataTableProps>({
   datasetName,
   columns: [
@@ -46,7 +57,7 @@ export const CustomColumnWidth = storybookItem.createTemplate<IDataTableProps>({
   data
 });
 
-export const RenamingColumns = storybookItem.createTemplate<IDataTableProps>({
+export const CustomColumnNames = storybookItem.createTemplate<IDataTableProps>({
   datasetName,
   columns: [
     { uuid: 'name', attribute: 'name', title: 'Name' },
