@@ -20,11 +20,17 @@
 	}
 
 	&__row {
+		position: relative;
 		border-bottom: 1px solid map-get($colors, 'light-gray');
 
 		&:hover {
 			background-color: lighten( map-get($colors, 'light-gray'), 3 );
 		}
+	}
+
+	&_actions {
+		@extend .flex-center-end, .gap-3,
+						.inset, .px-1;
 	}
 
 	&__cell {

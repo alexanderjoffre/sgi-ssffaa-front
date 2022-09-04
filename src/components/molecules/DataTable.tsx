@@ -12,6 +12,7 @@ import { ExcelAdapter } from "../../adapters/Excel.adapter";
 import { IExcelSheet } from "../../typescript/interfaces/ExcelFile.interface";
 import { FileDownloadHandler } from "../../handlers/FileDownload.handler";
 import { ArrayHelper } from "../../helpers/Array.helper";
+import { ShowBlock } from "../atoms/ShowBlock";
 
 interface IDataTableColumn extends IHasUuid {
 	attribute: string;
@@ -26,9 +27,9 @@ export interface IDataTableProps {
 	columns: IDataTableColumn[];
 	data: IHasUuid[];
 	recordsPerPage?: number;
-	actionView?: () => void;
-	actionEdit?: () => void;
-	actionDelete?: () => void;
+	actionView?: (record: IHasUuid) => void;
+	actionEdit?: (record: IHasUuid) => void;
+	actionDelete?: (record: IHasUuid) => void;
 }
 
 const TableContext = createContext({
@@ -56,7 +57,9 @@ const downloadDataAsExcel = async (tableData: IDataTableProps) => {
 
 export const DataTable = (props: IDataTableProps) => {
 	const data: IHasUuid[] 											= props.data;
-	
+	const showActions: boolean									= !!props.actionDelete || !!props.actionEdit || !!props.actionView;
+	const columnsWidth: string 									= getColumnWidths(props.columns) + (showActions ? ' 38px' : '');
+
 	const [filter, setFilter] 									= useState<string>('');
 	const debouncedFilter 											= useDebounce<string>(filter, 500);
 	const [filteredData, setFilteredData] 			= useState<IHasUuid[]>(data);
@@ -110,12 +113,19 @@ export const DataTable = (props: IDataTableProps) => {
 				</div>
 
 				<div className="data-table__heading grid"
-				style={{ gridTemplateColumns: getColumnWidths(props.columns) }}
+				style={{ gridTemplateColumns: columnsWidth }}
 				>
 					<LoopBlock list={props.columns} Component={DataTableHeadingCell} />
 				</div>
 				<div>
-					<DataTableRows columns={props.columns} data={currentPageData} />
+					{currentPageData.map( (record: IHasUuid) => (
+						<DataTableRow key={record.uuid} 
+							record={record}
+							tableProps={props} 
+							columnsWidth={columnsWidth}
+							showActions={showActions}
+						/>
+					))}
 				</div>
 
 				<div className="data-table__table-pages">
@@ -202,20 +212,54 @@ const DataTableHeadingCell = (column: IDataTableColumn) => {
 /***************************************************************
  * CONTENT ROWS
  ***************************************************************/
+interface IDataTableRowProps {
+	record: IHasUuid;
+	tableProps: IDataTableProps;
+	columnsWidth: string;
+	showActions: boolean;
+}
 
-const DataTableRows = (props: Omit<IDataTableProps, 'datasetName'>) => {
+const DataTableRow = (props: IDataTableRowProps) => {
+	const [isActionsVisible, setIsActionsVisible] = useState<boolean>(false);
+
+	const toggleActions = () => {
+		setIsActionsVisible(!isActionsVisible)
+	}
 	return (
-		<>
-		{props.data.map( (record: IHasUuid) => (
-			<div key={record.uuid} className="data-table__row grid"
-			style={{ gridTemplateColumns: getColumnWidths(props.columns) }}
-			>
-				{props.columns.map( (column: IDataTableColumn) => (
-					<DataTableRowCell key={column.uuid} column={column} value={record[column.attribute]} />
+		<div key={props.record.uuid} className="data-table__row">				
+			<div className="grid" style={{ gridTemplateColumns: props.columnsWidth }}>
+				{props.tableProps.columns.map( (column: IDataTableColumn) => (
+					<DataTableRowCell key={column.uuid} column={column} value={props.record[column.attribute]} />
 				))}
+
+				<ShowBlock if={props.showActions} Component={
+					<ActionButton icon={EIcon.CONTEXT_MENU} onClick={toggleActions} />
+				} />
 			</div>
-		))}
-		</>
+			<ShowBlock if={isActionsVisible} Component={
+				<div className="data-table_actions">
+					<ShowBlock if={!!props.tableProps.actionView} Component={
+						<ActionButton icon={EIcon.EYE} onClick={ 
+							() => {props.tableProps.actionView && props.tableProps.actionView(props.record)}
+						} />
+					} />
+					
+					<ShowBlock if={!!props.tableProps.actionEdit} Component={
+						<ActionButton icon={EIcon.EDIT} onClick={ 
+							() => {props.tableProps.actionEdit && props.tableProps.actionEdit(props.record)}
+						} />
+					} />
+
+					<ShowBlock if={!!props.tableProps.actionDelete} Component={
+						<ActionButton icon={EIcon.DELETE} onClick={ 
+							() => {props.tableProps.actionDelete && props.tableProps.actionDelete(props.record)}
+						} />
+					} />
+
+					<ActionButton icon={EIcon.CLOSE} onClick={toggleActions} />
+				</div>
+			} />
+		</div>
 	);
 }
 

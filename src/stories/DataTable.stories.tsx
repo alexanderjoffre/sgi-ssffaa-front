@@ -1,5 +1,6 @@
 import { DataTable, IDataTableProps } from '../components/molecules/DataTable';
 import { StoryBookItem } from '../helpers/StoryBookItem.helper';
+import { IHasUuid } from '../typescript/interfaces/HasUuid.interface';
 
 const storybookItem = new StoryBookItem(DataTable);
 
@@ -27,16 +28,17 @@ const data = [
 ];
 
 export const RawData = storybookItem.createTemplate<IDataTableProps>({
+  data,
   datasetName,
   columns: [
     { uuid: 'name', attribute: 'name' },
     { uuid: 'age', attribute: 'age' },
     { uuid: 'gender', attribute: 'gender' },
   ],
-  data
 });
 
 export const CustomRecordsPerPage = storybookItem.createTemplate<IDataTableProps>({
+  data,
   datasetName,
   recordsPerPage: 5,
   columns: [
@@ -44,25 +46,37 @@ export const CustomRecordsPerPage = storybookItem.createTemplate<IDataTableProps
     { uuid: 'age', attribute: 'age' },
     { uuid: 'gender', attribute: 'gender' },
   ],
-  data
 });
 
 export const CustomColumnWidth = storybookItem.createTemplate<IDataTableProps>({
+  data,
   datasetName,
   columns: [
     { uuid: 'name', attribute: 'name', columnWidth: 'minmax(100px, 20%)' },
     { uuid: 'age', attribute: 'age' },
     { uuid: 'gender', attribute: 'gender' },
   ],
-  data
 });
 
 export const CustomColumnNames = storybookItem.createTemplate<IDataTableProps>({
+  data,
   datasetName,
   columns: [
     { uuid: 'name', attribute: 'name', title: 'Name' },
     { uuid: 'age', attribute: 'age', title: 'Age' },
     { uuid: 'gender', attribute: 'gender', title: 'Gender (male/female)' },
   ],
-  data
+});
+
+export const ActionButtons = storybookItem.createTemplate<IDataTableProps>({
+  data,
+  datasetName,
+  columns: [
+    { uuid: 'name', attribute: 'name', title: 'Name' },
+    { uuid: 'age', attribute: 'age', title: 'Age' },
+    { uuid: 'gender', attribute: 'gender', title: 'Gender (male/female)' },
+  ],
+  actionView: (record: IHasUuid) => alert(`You clicked view in uuid: ${record.uuid}`),
+  actionEdit: (record: IHasUuid) => alert(`You clicked edit in uuid: ${record.uuid}`),
+  actionDelete: (record: IHasUuid) => alert(`You clicked delete in uuid: ${record.uuid}`),
 });
