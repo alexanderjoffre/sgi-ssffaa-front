@@ -1,8 +1,10 @@
+import { IHasUuid } from "../typescript/interfaces/HasUuid.interface";
+
 export class ArrayHelper {
 
 	private constructor() {}
 
-	public static getPagedData<T>(dataSet: any[], recordsPerPage: number): Map<number, T[]> {
+	public static getPagedData<T>(dataSet: T[], recordsPerPage: number): Map<number, T[]> {
 		const pagesCount = this.getPagesCount(dataSet, recordsPerPage);
 		const mapper: Map<number, T[]> = new Map([]);
 
@@ -19,6 +21,20 @@ export class ArrayHelper {
 
 	public static getPagesCount(dataSet: any[], recordsPerPage: number): number {
 		return Math.ceil(dataSet.length / recordsPerPage);
+	}
+
+	public static filterObjectArray(dataSet: IHasUuid[], filter: string): IHasUuid[] {
+		const results: IHasUuid[] = dataSet.filter( ({uuid, ...recordWithoutUuid}) => {
+			const dataValues: string = Object.values(recordWithoutUuid).join(',');
+
+			const filtrosInput: string[] = filter.split(',');
+			
+			return filtrosInput.every(
+				(filter: string) => dataValues.match(new RegExp(filter.trim(), 'ig'))
+			);
+		});
+
+		return results;
 	}
 
 }

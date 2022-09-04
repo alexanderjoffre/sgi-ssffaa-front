@@ -86,21 +86,11 @@ export const DataTable = (props: IDataTableProps) => {
 	}
 
 	useEffect(() => {
-		const results: IHasUuid[] = data.filter( ({uuid, ...recordWithoutUuid}) => {
-			const dataValues: string = Object.values(recordWithoutUuid).join(',');
-
-			const filtrosInput: string[] = filter.split(',');
-			
-			return filtrosInput.every(
-				(filter: string) => dataValues.match(new RegExp(filter.trim(), 'ig'))
-			);
-		})
-
+		const results: IHasUuid[] = ArrayHelper.filterObjectArray(data, filter);
 		setFilteredData(results);
 	}, [debouncedFilter]);
 
 	useEffect(() => refreshData(1), [filteredData]);
-
 
 	return (
 		<TableContext.Provider value={context}>
