@@ -8,7 +8,7 @@ export interface IActionButtonProps {
 }
 
 export const ActionButton = (props: IActionButtonProps) => (
-	<button className={`action-button action-button--${props.hoverColor ?? 'primary'}`} 
+	<button className={`action-button action-button--${props.hoverColor ?? 'info'}`} 
 		onClick={props.onClick}
 	>
 		<Icon icon={props.icon} css="action-button__icon" />

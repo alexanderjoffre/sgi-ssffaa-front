@@ -1,4 +1,4 @@
-import fileDownload from 'js-file-download'
+import fileDownload from 'js-file-download';
 import { IFileBuffer } from '../typescript/interfaces/FileBuffer.interface';
 
 export class FileHandler {
@@ -16,8 +16,18 @@ export class FileHandler {
 	}
 
 	public static checkFileSize(file: File, maxFileSizeKb: number): boolean {
-		const fileSize: number = Math.round(file.size / 1000);
-		return fileSize <= maxFileSizeKb;
+		const fileSizeKb: number =file.size / 1000;
+		return fileSizeKb <= maxFileSizeKb;
 	}
+
+	public static getBase64 = (file: File): Promise<string> => new Promise<string>( 
+		(resolve, reject) => {
+			const reader: FileReader = new FileReader();
+			reader.readAsDataURL(file);
+
+			reader.onloadend = () => resolve(`${reader.result}`);
+			reader.onerror = (error) => reject(error);
+		}
+	);
 
 }

@@ -46,7 +46,7 @@ export function StepperProgress({ stages }: IStepperProgressProps) {
 				<ProgressBar
 					currentValue={step}
 					maxValue={stagesCount}
-					fillColor="info"
+					fillColor="primary"
 				/>
 
 				<div className="stepper-progress__stage-info">

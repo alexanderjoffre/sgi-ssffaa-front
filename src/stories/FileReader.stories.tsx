@@ -35,3 +35,7 @@ export const DefaultConfiguration = storybookItem.createTemplate<IFileReaderProp
 export const RestrictExtensions = storybookItem.createTemplate<IFileReaderProps>(
   { ...defaultSettings, allowedExtensions: ['jpg'] }
 );
+
+export const RestrictFileSize = storybookItem.createTemplate<IFileReaderProps>(
+  { ...defaultSettings, maxFileSizeKb: 20 }
+);

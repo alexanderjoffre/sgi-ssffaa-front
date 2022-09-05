@@ -3,7 +3,7 @@ import { ShowBlock } from "./ShowBlock";
 export interface IProgressBarProps {
 	currentValue: number;
 	maxValue: number;
-	fillColor?: 'info' | 'success' | 'warning' | 'danger';
+	fillColor?: 'primary' | 'info' | 'success' | 'warning' | 'danger';
 	showIndicatorAt?: 'start' | 'end';
 }
 

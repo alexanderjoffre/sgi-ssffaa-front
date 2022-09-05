@@ -8,7 +8,7 @@
 
 	&:hover { cursor: pointer; }
 
-	&--primary:hover .action-button__icon { @extend .text-primary; }
+	&--info:hover .action-button__icon { @extend .text-info; }
 	&--success:hover .action-button__icon { @extend .text-success; }
 	&--warning:hover .action-button__icon { @extend .text-warning; }
 	&--danger:hover .action-button__icon { @extend .text-danger; }

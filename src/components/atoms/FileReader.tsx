@@ -10,7 +10,7 @@ export interface IFileReaderResult {
 export interface IFileReaderProps {
 	children: JSX.Element;
 	allowedExtensions?: string[];
-	maxFileSize?: number;
+	maxFileSizeKb?: number;
 	onChange(reader: IFileReaderResult): void
 }
 
@@ -28,8 +28,8 @@ export const FileReader = (props: IFileReaderProps) => {
 				: true
 			)
 			const checkMaxFileSize = ( 
-				props.maxFileSize 
-				? FileHandler.checkFileSize(selectedFile, props.maxFileSize)
+				props.maxFileSizeKb 
+				? FileHandler.checkFileSize(selectedFile, props.maxFileSizeKb)
 				: true
 			)			
 
