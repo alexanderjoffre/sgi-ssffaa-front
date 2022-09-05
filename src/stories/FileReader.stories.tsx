@@ -2,6 +2,7 @@ import { FileReader, IFileReaderProps, IFileReaderResult } from '../components/a
 import { EIcon } from '../typescript/enums/Icon.enum';
 import { StoryBookItem } from '../helpers/StoryBookItem.helper';
 import { Icon } from '../components/atoms/Icon';
+import { FileHandler } from '../handlers/File.handler';
 
 const defaultSettings = {
   children: (() => (
@@ -10,8 +11,12 @@ const defaultSettings = {
       <span>Seleccione un Archivo</span>
     </div>
   ))(),
-  onChange(reader: IFileReaderResult) {
+  async onChange(reader: IFileReaderResult) {
     alert(reader.statusMessage);
+
+    if (reader.status === 'success' && reader.data) {
+      window.open(await FileHandler.toObjectURL(reader.data));
+    }
   }
 }
 

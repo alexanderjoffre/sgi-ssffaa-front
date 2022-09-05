@@ -23,10 +23,15 @@ export class FileHandler {
 	public static toBase64 = async (file: File): Promise<string> => new Promise<string>( 
 		(resolve, reject) => {
 			const reader: FileReader = new FileReader();
-			reader.readAsDataURL(file);
 
-			reader.onloadend = () => resolve(`${reader.result}`);
+			reader.onloadend = () => {
+				const base64DataString: string = `${reader.result}`.replace('data:', '').replace(/^.+,/, '');
+				resolve(base64DataString)
+			};
+
 			reader.onerror = (error) => reject(error);
+
+			reader.readAsDataURL(file);
 		}
 	);
 
@@ -42,6 +47,14 @@ export class FileHandler {
 
 		return bytes.buffer;
 
+	}
+
+	public static toObjectURL = async (file: File): Promise<string> => {
+		const arrayBuffer: ArrayBuffer = await this.toArrayBuffer(file);
+		const blob: Blob = new Blob([arrayBuffer], { type: file.type });
+		const url: string = URL.createObjectURL(blob);
+
+		return url;
 	}
 
 }
