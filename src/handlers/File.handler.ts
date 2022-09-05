@@ -20,7 +20,7 @@ export class FileHandler {
 		return fileSizeKb <= maxFileSizeKb;
 	}
 
-	public static getBase64 = (file: File): Promise<string> => new Promise<string>( 
+	public static toBase64 = async (file: File): Promise<string> => new Promise<string>( 
 		(resolve, reject) => {
 			const reader: FileReader = new FileReader();
 			reader.readAsDataURL(file);
@@ -29,5 +29,19 @@ export class FileHandler {
 			reader.onerror = (error) => reject(error);
 		}
 	);
+
+	public static toArrayBuffer = async (file: File): Promise<ArrayBuffer> => {
+		const base64: string = await this.toBase64(file);
+		const binaryString: string = window.atob(base64);
+		const bineryLength: number = binaryString.length;
+		const bytes: Uint8Array = new Uint8Array(bineryLength);
+
+		for (let i = 0; i < bineryLength; i++) {
+			bytes[i] = binaryString.charCodeAt(i);
+		}
+
+		return bytes.buffer;
+
+	}
 
 }
