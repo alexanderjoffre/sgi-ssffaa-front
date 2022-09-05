@@ -24,7 +24,7 @@ const storybookItem = new StoryBookItem(FileReader);
 
 export default storybookItem.createMetadata( 
   'atoms/File Reader', 
-  'Select and preview files for upload or reading purposes',
+  'Select and preview files for upload or reading purposes. This is only a wrapper, rendered objects comes from component\'s children',
   {
     argTypes: {
       prefix: StoryBookItem.makeSelectControl(EIcon),
