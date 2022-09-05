@@ -1,0 +1,26 @@
+.badge {
+	@extend .py-1, .px-3, .min-w-6,
+					.text-snow, .text-sm;
+	border-radius: 16px;
+	display: inline-block;
+
+	&--primary {
+		background-color: map-get($colors, 'primary' );
+	}
+
+	&--info {
+		background-color: map-get($colors, 'info' );
+	}
+
+	&--success {
+		background-color: map-get($colors, 'success' );
+	}
+
+	&--warning {
+		background-color: map-get($colors, 'warning' );
+	}
+
+	&--danger {
+		background-color: map-get($colors, 'danger' );
+	}
+}

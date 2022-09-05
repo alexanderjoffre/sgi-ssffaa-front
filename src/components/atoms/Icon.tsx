@@ -15,8 +15,10 @@ export const Icon = (props: IIconProps) => (
 
 const icons: Map<string, any> = new Map([
 	[EIcon.ACCOUNT, mdi.mdiAccount],
+	[EIcon.ARROW_DOWN, mdi.mdiChevronDown],
 	[EIcon.ARROW_LEFT, mdi.mdiChevronLeft],
 	[EIcon.ARROW_RIGHT, mdi.mdiChevronRight],
+	[EIcon.ARROW_UP, mdi.mdiChevronUp],
 	[EIcon.ATTACH, mdi.mdiPaperclip],
 	[EIcon.CHECK, mdi.mdiCheckCircleOutline],
 	[EIcon.CLOSE, mdi.mdiClose],

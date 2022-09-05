@@ -1,0 +1,53 @@
+.accordion {
+	@extend .px-2;
+
+	&__item-header {
+		@extend .text-cool-gray, .p-3;
+		border-top: 1px solid map-get($colors, 'gray' );
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__item {
+		border-bottom: none;
+		
+		&:first-child {
+			& .accordion__item-header {
+				border-top: none;
+			}
+		}
+
+		&--expanded {
+			& .accordion__item-header {
+				border-bottom: 1px solid map-get($colors, 'gray' );
+			}
+
+			& .accordion__item-content {
+				@extend .py-6;
+				height: auto;
+			}
+
+			& .accordion__item-icon {
+				@extend .circle;
+				background-color: lighten( map-get($colors, 'info' ), 32 );
+			}
+		}
+	}
+
+	&__item-title {
+		@extend .flex-center-between;
+	}
+	
+	&__item-content {
+		@extend .px-6;
+		height: 0;
+		overflow: hidden;
+
+		transition: height .2s ease-in-out,
+								padding-top .2s ease-in-out,
+								padding-right .2s ease-in-out;
+	}
+
+}

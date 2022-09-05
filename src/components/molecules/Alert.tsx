@@ -1,4 +1,5 @@
 import { EIcon } from "../../typescript/enums/Icon.enum";
+import { Card } from "../atoms/Card";
 import { Icon } from "../atoms/Icon";
 
 export interface IAlertProps {
@@ -14,8 +15,10 @@ const iconMapper: Map<string, EIcon> = new Map([
 ]);
 
 export const Alert = (props: IAlertProps) => (
-	<div className={`alert alert--${props.type}`}>
-		<Icon icon={iconMapper.get(props.type) ?? EIcon.INFO} />
-		{props.children}
-	</div>
+	<Card type={props.type} >
+		<div className="alert">
+			<Icon icon={iconMapper.get(props.type) ?? EIcon.INFO} />
+			{props.children}
+		</div>
+	</Card>
 );

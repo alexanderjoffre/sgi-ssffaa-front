@@ -1,8 +1,34 @@
+$AlertDarkenAmount: 16;
+$AlertLightenAmoun: 32;
+
 .card {
 	@extend .p-5;
-	@include shadow('deep-blue');	
-
+	
 	&--rounded {
 		border-radius: 8px;
+	}
+	
+	&--shadow {
+		@include shadow('deep-blue');	
+	}
+
+	&--info {
+		color: darken( map-get($colors, 'info' ), $AlertDarkenAmount );
+		background-color: lighten( map-get($colors, 'info' ), $AlertLightenAmoun );
+	}
+
+	&--success {
+		color: darken( map-get($colors, 'success' ), $AlertDarkenAmount );
+		background-color: lighten( map-get($colors, 'success' ), $AlertLightenAmoun );
+	}
+
+	&--warning {
+		color: darken( map-get($colors, 'warning' ), $AlertDarkenAmount );
+		background-color: lighten( map-get($colors, 'warning' ), $AlertLightenAmoun );
+	}
+
+	&--danger {
+		color: darken( map-get($colors, 'danger' ), $AlertDarkenAmount );
+		background-color: lighten( map-get($colors, 'danger' ), $AlertLightenAmoun );
 	}
 }

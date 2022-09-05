@@ -1,36 +1,3 @@
-$AlertDarkenAmount: 18;
-$AlertLightenAmoun: 30;
-
 .alert {
-	@extend .flex-center-start, .gap-2, .p-3;
-	border: {
-		width: 2px;
-		style: solid;
-		radius: 8px;
-	}
-
-	&--info {
-		color: darken( map-get($colors, 'info' ), $AlertDarkenAmount );
-		border-color: darken( map-get($colors, 'info' ), $AlertDarkenAmount );
-		background-color: lighten( map-get($colors, 'info' ), $AlertLightenAmoun );
-	}
-
-	&--success {
-		color: darken( map-get($colors, 'success' ), $AlertDarkenAmount );
-		border-color: darken( map-get($colors, 'success' ), $AlertDarkenAmount );
-		background-color: lighten( map-get($colors, 'success' ), $AlertLightenAmoun );
-	}
-
-	&--warning {
-		color: darken( map-get($colors, 'warning' ), $AlertDarkenAmount );
-		border-color: darken( map-get($colors, 'warning' ), $AlertDarkenAmount );
-		background-color: lighten( map-get($colors, 'warning' ), $AlertLightenAmoun );
-	}
-
-	&--danger {
-		color: darken( map-get($colors, 'danger' ), $AlertDarkenAmount );
-		border-color: darken( map-get($colors, 'danger' ), $AlertDarkenAmount );
-		background-color: lighten( map-get($colors, 'danger' ), $AlertLightenAmoun );
-	}
-
+	@extend .flex-center-start, .gap-2;
 }
