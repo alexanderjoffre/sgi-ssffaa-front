@@ -4,9 +4,9 @@ export class ArrayHelper {
 
 	private constructor() {}
 
-	public static getPagedData<T>(dataSet: T[], recordsPerPage: number): Map<number, T[]> {
+	public static getPagedData(dataSet: IHasUuid[], recordsPerPage: number): Map<number, IHasUuid[]> {
 		const pagesCount = this.getPagesCount(dataSet, recordsPerPage);
-		const mapper: Map<number, T[]> = new Map([]);
+		const mapper: Map<number, IHasUuid[]> = new Map([]);
 
 		Array.from( Array(pagesCount).keys() ).forEach(
 			(index: number) => {
@@ -35,6 +35,28 @@ export class ArrayHelper {
 		});
 
 		return results;
+	}
+
+	public static sortByColumnAsc = (dataSet: IHasUuid[], attribute: string) => {
+		dataSet.sort(
+			( a: IHasUuid, b: IHasUuid ) => {
+				if ( a[attribute] < b[attribute] ) { return -1; }
+				if ( a[attribute] > b[attribute] ) { return 1; }
+				return 0;
+			}
+		);
+		return dataSet;
+	}
+	
+	public static sortByColumnDesc = (dataSet: IHasUuid[], attribute: string) => {
+		dataSet.sort(
+			( a: IHasUuid, b: IHasUuid ) => {
+				if ( a[attribute] > b[attribute] ) { return -1; }
+				if ( a[attribute] < b[attribute] ) { return 1; }
+				return 0;
+			}
+		);
+		return dataSet;
 	}
 
 }

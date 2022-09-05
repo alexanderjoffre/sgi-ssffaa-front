@@ -7,7 +7,7 @@ const storybookItem = new StoryBookItem(DataTable);
 const datasetName = 'dataset-storybook'
 
 export default storybookItem.createMetadata( 
-  'molecules/DataTable', 
+  'molecules/Data Table', 
   'Table to perform actions over a data set. 10 records are displayed per page by default',
   { }
 );

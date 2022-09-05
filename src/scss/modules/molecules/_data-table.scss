@@ -28,7 +28,7 @@
 		}
 	}
 
-	&_actions {
+	&__row-actions {
 		@extend .flex-center-end, .gap-3,
 						.inset, .px-1;
 	}

@@ -17,6 +17,10 @@ export default storybookItem.createMetadata(
   }
 );
 
-export const Primary = storybookItem.createTemplate<IActionButtonProps>(
+export const DefaultStyles = storybookItem.createTemplate<IActionButtonProps>(
   { ...buttonSettings, icon: EIcon.ACCOUNT }
+);
+
+export const WithCustomColorOnHover = storybookItem.createTemplate<IActionButtonProps>(
+  { ...buttonSettings, icon: EIcon.DELETE, hoverColor: 'danger' }
 );

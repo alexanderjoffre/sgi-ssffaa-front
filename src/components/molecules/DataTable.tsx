@@ -10,7 +10,7 @@ import { useDebounce } from "../../hooks/debounce.hooks";
 import { ActionButton } from "./ActionButton";
 import { ExcelAdapter } from "../../adapters/Excel.adapter";
 import { IExcelSheet } from "../../typescript/interfaces/ExcelFile.interface";
-import { FileDownloadHandler } from "../../handlers/FileDownload.handler";
+import { FileHandler } from "../../handlers/File.handler";
 import { ArrayHelper } from "../../helpers/Array.helper";
 import { ShowBlock } from "../atoms/ShowBlock";
 
@@ -52,7 +52,7 @@ const downloadDataAsExcel = async (tableData: IDataTableProps) => {
 	};
 
 	const excel = new ExcelAdapter([sheet]);
-	await FileDownloadHandler.download( excel, `${tableData.datasetName}.xlsx` );
+	await FileHandler.download( excel, `${tableData.datasetName}.xlsx` );
 }
 
 export const DataTable = (props: IDataTableProps) => {
@@ -76,7 +76,7 @@ export const DataTable = (props: IDataTableProps) => {
 	};
 
 	const refreshData = (page: number) => {
-		const pagedData = ArrayHelper.getPagedData<IHasUuid>(
+		const pagedData = ArrayHelper.getPagedData(
 			filteredData,
 			recordsPerPage
 		);
@@ -106,8 +106,7 @@ export const DataTable = (props: IDataTableProps) => {
 					onChange={(event) => setFilter(event.target.value)}
 					/>
 
-					<ActionButton 
-						icon={EIcon.EXCEL} 
+					<ActionButton icon={EIcon.EXCEL} hoverColor="success"
 						onClick={() => { downloadDataAsExcel({...props, data: filteredData}) }} 
 					/>
 				</div>
@@ -140,28 +139,6 @@ export const DataTable = (props: IDataTableProps) => {
  * HEADING CELLS
  ***************************************************************/
 
-const sortByColumnAsc = (data: IHasUuid[], attribute: string) => {
-	data.sort(
-		( a: IHasUuid, b: IHasUuid ) => {
-			if ( a[attribute] < b[attribute] ) { return -1; }
-			if ( a[attribute] > b[attribute] ) { return 1; }
-			return 0;
-		}
-	);
-	return data;
-}
-
-const sortByColumnDesc = (data: IHasUuid[], attribute: string) => {
-	data.sort(
-		( a: IHasUuid, b: IHasUuid ) => {
-			if ( a[attribute] > b[attribute] ) { return -1; }
-			if ( a[attribute] < b[attribute] ) { return 1; }
-			return 0;
-		}
-	);
-	return data;
-}
-
 const DataTableHeadingCell = (column: IDataTableColumn) => {
 	const { data, setData } = useContext(TableContext);
 	const [ order, setOrder ] = useState<string>('none');
@@ -169,10 +146,10 @@ const DataTableHeadingCell = (column: IDataTableColumn) => {
 	const sortData = (attribute: string) => {
 		switch(order) {
 			case 'asc':
-				setData(sortByColumnAsc(data, attribute));
+				setData(ArrayHelper.sortByColumnAsc(data, attribute));
 				break;
 			case 'desc':
-				setData(sortByColumnDesc(data, attribute));
+				setData(ArrayHelper.sortByColumnDesc(data, attribute));
 				break;
 			default:
 				break;
@@ -225,6 +202,7 @@ const DataTableRow = (props: IDataTableRowProps) => {
 	const toggleActions = () => {
 		setIsActionsVisible(!isActionsVisible)
 	}
+	
 	return (
 		<div key={props.record.uuid} className="data-table__row">				
 			<div className="grid" style={{ gridTemplateColumns: props.columnsWidth }}>
@@ -233,11 +211,13 @@ const DataTableRow = (props: IDataTableRowProps) => {
 				))}
 
 				<ShowBlock if={props.showActions} Component={
-					<ActionButton icon={EIcon.CONTEXT_MENU} onClick={toggleActions} />
+					<div className="flex-center-center">
+						<ActionButton icon={EIcon.CONTEXT_MENU} onClick={toggleActions} />
+					</div>
 				} />
 			</div>
 			<ShowBlock if={isActionsVisible} Component={
-				<div className="data-table_actions">
+				<div className="data-table__row-actions">
 					<ShowBlock if={!!props.tableProps.actionView} Component={
 						<ActionButton icon={EIcon.EYE} onClick={ 
 							() => {props.tableProps.actionView && props.tableProps.actionView(props.record)}
@@ -251,7 +231,7 @@ const DataTableRow = (props: IDataTableRowProps) => {
 					} />
 
 					<ShowBlock if={!!props.tableProps.actionDelete} Component={
-						<ActionButton icon={EIcon.DELETE} onClick={ 
+						<ActionButton icon={EIcon.DELETE} hoverColor="danger" onClick={ 
 							() => {props.tableProps.actionDelete && props.tableProps.actionDelete(props.record)}
 						} />
 					} />

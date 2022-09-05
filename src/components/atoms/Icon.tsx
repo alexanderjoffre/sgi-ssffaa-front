@@ -17,6 +17,7 @@ const icons: Map<string, any> = new Map([
 	[EIcon.ACCOUNT, mdi.mdiAccount],
 	[EIcon.ARROW_LEFT, mdi.mdiChevronLeft],
 	[EIcon.ARROW_RIGHT, mdi.mdiChevronRight],
+	[EIcon.ATTACH, mdi.mdiPaperclip],
 	[EIcon.CHECK, mdi.mdiCheckCircleOutline],
 	[EIcon.CLOSE, mdi.mdiClose],
 	[EIcon.DELETE, mdi.mdiTrashCan],

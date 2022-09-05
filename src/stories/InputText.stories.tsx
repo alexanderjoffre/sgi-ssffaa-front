@@ -2,7 +2,7 @@ import { InputText, IInputText } from '../components/molecules/InputText';
 import { EIcon } from '../typescript/enums/Icon.enum';
 import { StoryBookItem } from '../helpers/StoryBookItem.helper';
 
-const inputSettings = { value: 'user@domain.com', placeholder: 'Quick search' };
+const inputSettings = { value: 'user@domain.com', placeholder: 'Quick search', onChange: () => {} };
 const storybookItem = new StoryBookItem(InputText);
 
 export default storybookItem.createMetadata( 
