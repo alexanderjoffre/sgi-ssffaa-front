@@ -7,7 +7,6 @@ import { ShowBlock } from "../atoms/ShowBlock";
 
 export interface IAccordionProps {
 	items: IAccordionItemProps[];
-	multiExpand?: boolean;
 }
 
 export const Accordion = (props: IAccordionProps) => {
