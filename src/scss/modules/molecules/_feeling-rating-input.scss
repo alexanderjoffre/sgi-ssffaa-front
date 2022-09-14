@@ -1,0 +1,18 @@
+.feeling-rating-input {
+	@extend .flex-center-start, .gap-2;
+
+	&__faces {
+		@extend .flex-center-start, .gap-2,
+						.text-gray;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__indicator {
+		@extend .text-cool-gray;
+		font-size: map-get($font-sizing, 'sm' );
+		text-transform: capitalize;
+	}
+}

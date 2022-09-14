@@ -11,11 +11,11 @@
 }
 
 @each $name, $hex in $colors {
-	.text-#{$name}, .hover\:text-#{$name} {
+	.text-#{$name}, .hover\:text-#{$name}:hover {
 		color: $hex;
 	}
 
-	.bg-#{$name}, .hover\:bg-#{$name} {
+	.bg-#{$name}, .hover\:bg-#{$name}:hover {
 		background-color: $hex;
 	}
 }

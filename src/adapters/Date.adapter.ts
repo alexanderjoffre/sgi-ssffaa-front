@@ -1,15 +1,18 @@
 import dayjs from "dayjs";
 import utc from 'dayjs/plugin/utc';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import { EDateInterval } from "../typescript/enums/DateInterval.enum";
 
 export class DateAdapter {
 
 	private _dayjs = dayjs;
 	private _utc = utc;
+	private _relativeTime = relativeTime;
 	private static instance: DateAdapter;
 
 	private constructor() {
 		this._dayjs.extend(this._utc);
+		this._dayjs.extend(this._relativeTime);
 	}
 
 	/**
@@ -79,5 +82,16 @@ export class DateAdapter {
 		interval: EDateInterval
 	): string {
 		return dayjs(baseDate).add(quantity, interval).utc().format();
+	}
+
+	public from(
+		relativeDate: string, 
+		withoutSuffix: boolean = false
+	): string {
+		return this._dayjs(relativeDate).utc().fromNow(withoutSuffix);
+	}
+
+	public setLocale(language: string): void {
+		this._dayjs.locale(language);
 	}
 };

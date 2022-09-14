@@ -7,7 +7,7 @@ const storybookItem = new StoryBookItem(Link);
 
 export default storybookItem.createMetadata( 
   'atoms/Link', 
-  'Paginator with max value count and prev/next callbacks',
+  'Component that let\s navigate to internal or external URLs',
   { }
 );
 

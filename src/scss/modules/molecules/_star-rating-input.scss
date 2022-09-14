@@ -1,0 +1,17 @@
+.star-rating-input {
+	@extend .flex-center-start, .gap-2;
+
+	&__stars {
+		@extend .flex-center-start,
+						.text-gray;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__indicator {
+		@extend .text-cool-gray;
+		font-size: map-get($font-sizing, 'sm' );
+	}
+}

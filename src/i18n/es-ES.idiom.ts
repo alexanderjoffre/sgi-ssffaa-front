@@ -4,6 +4,7 @@ export const IntlInfoSpanish: IIntlStrategy = {
 
 	languageCode: 'es-ES',
 	languageName: 'Español',
+	dateLocale: 'es',
 	dateFormat: 'DD-MM-YYYY',
 
 	number(value: number) {

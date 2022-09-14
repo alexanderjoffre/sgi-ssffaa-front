@@ -8,7 +8,7 @@ export interface IIconProps {
 }
 
 export const Icon = (props: IIconProps) => (
-	<ReactMdi className={ props.css ?? 'w-6' }
+	<ReactMdi className={ props.css ?? 'w-6 h-6' }
 		path={ icons.get(props.icon) }
 	/>
 );
@@ -27,10 +27,17 @@ const icons: Map<string, any> = new Map([
 	[EIcon.EDIT, mdi.mdiPencil],
 	[EIcon.EXCEL, mdi.mdiMicrosoftExcel],
 	[EIcon.EYE, mdi.mdiEye],
+	[EIcon.FACE_ANGRY, mdi.mdiEmoticonAngryOutline],
+	[EIcon.FACE_BAD, mdi.mdiEmoticonSadOutline],
+	[EIcon.FACE_NEUTRAL, mdi.mdiEmoticonNeutralOutline],
+	[EIcon.FACE_GOOD, mdi.mdiEmoticonHappyOutline],
+	[EIcon.FACE_HAPPY, mdi.mdiEmoticonExcitedOutline],
 	[EIcon.INFO, mdi.mdiInformationOutline],
 	[EIcon.CONTEXT_MENU, mdi.mdiDotsVertical],
 	[EIcon.SEARCH, mdi.mdiMagnify],
 	[EIcon.SORT_ALPHABETHICAL, mdi.mdiUnfoldMoreHorizontal],
+	[EIcon.STAR_EMPTY, mdi.mdiStarOutline],
+	[EIcon.STAR, mdi.mdiStar],
 	[EIcon.SUCCESS, mdi.mdiCheckCircleOutline],
 	[EIcon.WARNNING, mdi.mdiAlertOutline],
 ]);

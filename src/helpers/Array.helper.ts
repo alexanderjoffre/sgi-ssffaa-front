@@ -59,4 +59,10 @@ export class ArrayHelper {
 		return dataSet;
 	}
 
+	public static makeRange(max: number): number[] {
+		return Array.from(
+			Array(max).keys()
+		).map((i: number) => i + 1);
+	}
+
 }
