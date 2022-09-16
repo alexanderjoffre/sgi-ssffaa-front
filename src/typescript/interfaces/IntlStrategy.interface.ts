@@ -5,6 +5,7 @@ export interface IIntlStrategy {
 	readonly languageName: string;
 	readonly dateLocale: string;
 	readonly dateFormat: string;
+	readonly daysOfWeekShort: string[];
 	readonly text: IIntlText;
 
 	number(value: number): string;

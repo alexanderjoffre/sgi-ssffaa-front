@@ -35,7 +35,7 @@ const AccordionItem = (props: IAccordionItemProps) => {
 
 	return (
 		<div className={
-			`accordion__item ${isExpanded ? 'accordion__item--expanded' : ''}`
+			`accordion__item ${isExpanded && 'accordion__item--expanded'}`
 		}>
 			<div className="accordion__item-header" onClick={handleExpand}>
 				<div className="accordion__item-title">

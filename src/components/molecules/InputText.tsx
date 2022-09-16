@@ -26,7 +26,7 @@ export const InputText = (props: IInputText) => {
 				Component={<label className="input-text__label">{props.label}</label>} 
 			/>
 
-			<div className={`input-text__container ${isActive ? 'input-text__container--active' : ''}`}>
+			<div className={`input-text__container ${isActive && 'input-text__container--active'}`}>
 				<ShowBlock if={!!props.prefix} 
 					Component={<Icon icon={props.prefix ?? EIcon.NONE} css='input-text__icon'/>} 
 				/>

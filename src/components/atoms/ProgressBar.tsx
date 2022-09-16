@@ -12,7 +12,7 @@ export const ProgressBar = (props: IProgressBarProps) => {
 	const indicator = `${progress}%`;
 	
 	return (
-		<div className={`progressbar flex-row-${(props.showIndicatorAt === 'end' ? 'reverse' : '')}`}>
+		<div className={`progressbar flex-row-${(props.showIndicatorAt === 'end' && 'reverse')}`}>
 			<ShowBlock if={!!props.showIndicatorAt} 
 				Component={<label className="progressbar__indicator">{indicator}</label>}
 			/>

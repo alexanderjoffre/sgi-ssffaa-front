@@ -5,13 +5,13 @@ import { ShowBlock } from "../atoms/ShowBlock";
 
 type feelings = 'angry' | 'bad' | 'neutral' | 'good' | 'happy' | null;
 
-export interface IFeelingRatingInputProps {
+export interface IInputFeelingRatingProps {
 	faces: 3 | 5;
 	onChange(value: feelings): void;
 	showIndicator?: boolean;
 }
 
-export const FeelingRatingInput = (props: IFeelingRatingInputProps) => {
+export const InputFeelingRating = (props: IInputFeelingRatingProps) => {
 	const [currentValue, setCurrentValue] = useState<feelings>(null);
 
 	const selectValue = (value: feelings) => {
@@ -20,8 +20,8 @@ export const FeelingRatingInput = (props: IFeelingRatingInputProps) => {
 	}
 
 	return (
-		<div className="feeling-rating-input">
-			<div className="feeling-rating-input__faces">
+		<div className="input-feeling-rating">
+			<div className="input-feeling-rating__faces">
 
 					<div onClick={() => selectValue('angry')} >
 						<Icon icon={EIcon.FACE_ANGRY}
@@ -63,7 +63,7 @@ export const FeelingRatingInput = (props: IFeelingRatingInputProps) => {
 
 			</div>
 			<ShowBlock if={!!props.showIndicator} 
-				Component={<label className="feeling-rating-input__indicator">{currentValue}</label>}
+				Component={<label className="input-feeling-rating__indicator">{currentValue}</label>}
 			/>
 		</div>
 	)

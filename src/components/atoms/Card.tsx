@@ -7,9 +7,9 @@ export interface ICardProps {
 
 export const Card = (props: ICardProps) => (
 	<div className={` card 
-		${props.rounded ? 'card--rounded' : ''}
-		${props.shadow ? 'card--shadow' : ''}
-		${props.type ? `card--${props.type}` : ''}
+		${props.rounded && 'card--rounded'}
+		${props.shadow && 'card--shadow'}
+		${props.type && `card--${props.type}`}
 	`}>
 		{props.children}
 	</div>

@@ -26,7 +26,7 @@
 	}
 }
 
-@for $i from 1 to 25 {
+@for $i from 1 to 401 {
 	$spacing: $i * 4px;
 
 	.m-#{$i} {

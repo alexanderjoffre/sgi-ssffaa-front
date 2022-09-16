@@ -75,7 +75,7 @@ const PaginationItem = (props: IPaginationItemProps) => {
 
 	return (
 		<div className={
-			`pagination__item ${props.isSelected ? 'pagination__item--active': ''}`
+			`pagination__item ${props.isSelected && 'pagination__item--active'}`
 		}
 		onClick={() => setCurrentPage(props.value - 1)}
 		>
