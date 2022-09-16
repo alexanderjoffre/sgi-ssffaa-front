@@ -1,7 +1,15 @@
 .data-table {
+	&__header {
+		@extend .mb-4, .flex-center-between, .gap-3;
+	}
+
+	&__title {
+		@extend .text-md, .text-black;
+		line-height: 1;
+	}
 
 	&__actions {
-		@extend .mb-4, .flex-center-end, .gap-3;
+		@extend .flex-center-end, .gap-3;
 	}
 
 	&__heading {

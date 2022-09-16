@@ -23,6 +23,7 @@ interface IDataTableColumn extends IHasUuid {
 }
 
 export interface IDataTableProps {
+	title?: string;
 	datasetName: string;
 	columns: IDataTableColumn[];
 	data: IHasUuid[];
@@ -98,17 +99,22 @@ export const DataTable = (props: IDataTableProps) => {
 	return (
 		<TableContext.Provider value={context}>
 			<div className="data-table">
-				<div className="data-table__actions">
-					<InputText type="text"
-					value={filter}
-					placeholder="Quick filters"
-					sufix={EIcon.SEARCH}
-					onChange={(event) => setFilter(event.target.value)}
-					/>
+				<div className="data-table__header">
+					<h3 className="data-table__title">
+						{props.title}
+					</h3>
+					<div className="data-table__actions">
+						<InputText type="text"
+						value={filter}
+						placeholder="Quick filters"
+						sufix={EIcon.SEARCH}
+						onChange={(event) => setFilter(event.target.value)}
+						/>
 
-					<ActionButton icon={EIcon.EXCEL} hoverColor="success"
-						onClick={() => { downloadDataAsExcel({...props, data: filteredData}) }} 
-					/>
+						<ActionButton icon={EIcon.EXCEL} hoverColor="success"
+							onClick={() => { downloadDataAsExcel({...props, data: filteredData}) }} 
+						/>
+					</div>
 				</div>
 
 				<div className="data-table__heading grid"

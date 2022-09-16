@@ -37,6 +37,17 @@ export const RawData = storybookItem.createTemplate<IDataTableProps>({
   ],
 });
 
+export const WithTitle = storybookItem.createTemplate<IDataTableProps>({
+  data,
+  datasetName,
+  title: 'This is the title of the table',
+  columns: [
+    { uuid: 'name', attribute: 'name' },
+    { uuid: 'age', attribute: 'age' },
+    { uuid: 'gender', attribute: 'gender' },
+  ],
+});
+
 export const CustomRecordsPerPage = storybookItem.createTemplate<IDataTableProps>({
   data,
   datasetName,
