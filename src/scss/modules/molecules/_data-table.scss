@@ -1,0 +1,52 @@
+.data-table {
+	&__header {
+		@extend .mb-4, .flex-center-between, .gap-3;
+	}
+
+	&__title {
+		@extend .text-md, .text-black;
+		line-height: 1;
+	}
+
+	&__actions {
+		@extend .flex-center-end, .gap-3;
+	}
+
+	&__heading {
+		@extend .bg-light-gray;
+		display: grid;
+		border-radius: 8px;
+	}
+
+	&__heading-cell {
+		@extend .flex-center-between,
+						.px-3, .py-4, .text-deep-blue;
+	}
+
+	&__heading-sort:hover {
+		cursor: pointer;
+	}
+
+	&__row {
+		position: relative;
+		border-bottom: 1px solid map-get($colors, 'light-gray');
+
+		&:hover {
+			background-color: lighten( map-get($colors, 'light-gray'), 3 );
+		}
+	}
+
+	&__row-actions {
+		@extend .flex-center-end, .gap-3,
+						.inset, .px-1;
+	}
+
+	&__cell {
+		@extend .px-3, .py-4, 
+						.text-cool-gray, .text-sm;
+	}
+
+	&__table-pages {
+		@extend .mt-6, .flex-center-end;
+	}
+}

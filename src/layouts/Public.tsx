@@ -1,5 +1,4 @@
-import Head from 'next/head'
-import { useEffect } from 'react';
+import Head from 'next/head';
 
 interface ILayoutProps {
 
@@ -33,7 +32,7 @@ export const Layout = (props: ILayoutProps) => {
 				{props.children}
 			</main>
 			<footer>
-				<span>Sistema de Gestión Institucional v{process.env.NEXT_PUBLIC_APP_VERSION}</span>
+				<span>Sistema v{process.env.NEXT_PUBLIC_APP_VERSION}</span>
 			</footer>
 		</>
 	);

@@ -1,41 +1,50 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Button, IButtonProps } from '../components/molecules/Button';
+import { EIcon } from '../typescript/enums/Icon.enum';
+import { StoryBookItem } from '../helpers/StoryBookItem.helper';
 
-import { Button } from './Button';
+const buttonSettings = {text: 'Click Me', onClick: () => {alert('Clicked!')}};
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
-  title: 'Example/Button',
-  component: Button,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-} as ComponentMeta<typeof Button>;
+const storybookItem = new StoryBookItem(Button);
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+export default storybookItem.createMetadata( 
+  'molecules/Button', 
+  'Button component to make user interactions',
+  {
+    argTypes: {
+      prefix: StoryBookItem.makeSelectControl(EIcon),
+      sufix: StoryBookItem.makeSelectControl(EIcon),
+    }
+  }
+);
 
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
+export const Primary = storybookItem.createTemplate<IButtonProps>(
+  { ...buttonSettings, type: 'primary' }
+);
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
+export const Succes = storybookItem.createTemplate<IButtonProps>(
+  { ...buttonSettings, type: 'success' }
+);
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
+export const Warning = storybookItem.createTemplate<IButtonProps>(
+  { ...buttonSettings, type: 'warning' }
+);
 
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
-};
+export const Danger = storybookItem.createTemplate<IButtonProps>(
+  { ...buttonSettings, type: 'danger' }
+);
+
+export const DangerWithPrefix = storybookItem.createTemplate<IButtonProps>(
+  { ...buttonSettings, type: 'danger', prefix: EIcon.DELETE }
+);
+
+export const Link = storybookItem.createTemplate<IButtonProps>(
+  { ...buttonSettings, type: 'link' }
+);
+
+export const LinkWithPrefix = storybookItem.createTemplate<IButtonProps>(
+  { ...buttonSettings, type: 'link', prefix: EIcon.CLOSE }
+);
+
+export const LinkWithSufix = storybookItem.createTemplate<IButtonProps>(
+  { ...buttonSettings, type: 'link', sufix: EIcon.CHECK }
+);

@@ -1,0 +1,19 @@
+.action-button {
+	@extend .flex-center-center, .bg-snow;
+
+	min-width: 38px;
+	min-height: 38px;
+	border: none;
+	border-radius: 4px;
+
+	&:hover { cursor: pointer; }
+
+	&--info:hover .action-button__icon { @extend .text-info; }
+	&--success:hover .action-button__icon { @extend .text-success; }
+	&--warning:hover .action-button__icon { @extend .text-warning; }
+	&--danger:hover .action-button__icon { @extend .text-danger; }
+
+	&__icon {
+		@extend .text-cool-gray, .w-6;
+	}
+}

@@ -1,0 +1,62 @@
+$cellSize: 10;
+
+.calendar {
+	@extend .w-#{$cellSize * 7 + 25};
+
+	&__month {
+		@extend .flex-center-between, .gap-2, .pb-3,
+						.text-cool-gray, .text-md;
+
+		border-bottom: 1px solid map-get($colors, 'light-gray' );
+		text-transform: uppercase;
+	}
+
+	&__month-name {
+		@extend .flex-center-between, .gap-2;
+	}
+
+	&__heading {
+		@extend .grid, .cols-7, .gap-2;
+	}
+
+	&__heading-cell {
+		font-weight: 600
+	}
+
+	&__dates {
+		@extend .grid, .cols-7, .gap-2;
+
+		@for $col from 1 to 8 {
+			&--start-#{$col} .calendar__date:first-child {
+				grid-column: $col;
+			}
+		}
+	}
+
+	&__date, &__heading-cell {
+		@extend .flex-center-center,
+						.w-#{$cellSize}, .h-#{$cellSize}, 
+						.text-cool-gray, .text-sm;		
+	}
+
+	&__date {
+		transition: background-color .2s ease-in-out;
+
+		&:hover:not(&--selected, &--disabled) {
+			@extend .bg-light-gray;
+			cursor: pointer;
+		}
+
+		&--disabled {
+			opacity: .4;
+			&:hover {
+				cursor: not-allowed;
+			}
+		}
+		
+		&--selected {
+			@extend .bg-primary, .circle;
+			color: map-get($colors, 'snow' ) !important;
+		}
+	}
+}

@@ -6,7 +6,7 @@ import { idioms } from '../src/i18n/idioms';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const { locale } = useRouter();
-  const languagePack = idioms[`${locale}`]
+  const languagePack = idioms[`${locale}`];
 
   return (
     <AppContext.Provider value={{

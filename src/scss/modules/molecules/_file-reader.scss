@@ -1,0 +1,10 @@
+.file-reader {
+
+	&__button {
+		&:hover { cursor: pointer; }
+	}
+
+	&__input {
+		display: none;
+	}
+}

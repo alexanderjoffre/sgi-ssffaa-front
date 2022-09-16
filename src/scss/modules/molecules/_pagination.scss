@@ -1,0 +1,17 @@
+.pagination {
+	@extend .flex-center-start, .gap-1;
+
+	&__item {
+		@extend .flex-center-center,
+						.min-w-7, .min-h-7, .circle,
+						.text-sm;
+
+		transition: color .2s ease-in-out,
+								background-color .2s ease-in-out,;
+
+		&:hover, &--active {
+			@extend .bg-primary, .text-snow;
+			cursor: pointer;
+		}
+	}
+}

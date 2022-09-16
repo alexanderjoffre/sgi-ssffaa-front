@@ -15,13 +15,25 @@ $flex-justify-content: (
 	flex-grow: 1; 
 }
 
+.flex-col {
+	flex-direction: column;
+}
+
+.flex-row {
+	flex-direction: row;
+}
+
+.flex-row-reverse {
+	flex-direction: row-reverse;
+}
+
 %flex {
 	display: flex;
 }
 
 @each $aiKey, $aiValue in $flex-align-items {
 	@each $jcKey, $jcValue in $flex-justify-content {
-		.h-flex-#{$aiKey}-#{$jcKey} {
+		.flex-#{$aiKey}-#{$jcKey} {
 			@extend %flex;
 			align-items: $aiValue;
 			justify-content: $jcValue;

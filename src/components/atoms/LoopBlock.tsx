@@ -3,7 +3,7 @@ import { IHasUuid } from "../../typescript/interfaces/HasUuid.interface";
 interface ILoopBlockProps {
 
 	// this array will be looped around to render
-	list: IHasUuid[];
+	list: any[];
 
 	// Component to be render
 	Component: (data: any) => JSX.Element;
@@ -11,6 +11,6 @@ interface ILoopBlockProps {
 
 export const LoopBlock = ({list, Component}: ILoopBlockProps): JSX.Element => (
 	<>
-		{ list.map(item => <Component key={item.uuid} data={item}/>) }
+		{ list.map(item => <Component key={item.uuid} {...item}/>) }
 	</>
-)
+);

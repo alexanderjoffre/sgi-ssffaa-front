@@ -2,6 +2,7 @@
 	&, &:is(::before, ::after) {
 		margin: 0;
 		padding: 0;
+		box-sizing: border-box;
 	}
 }
 
@@ -10,8 +11,9 @@ html {
 }
 
 body {
-	font-family: map-get($fonts, 'regular'), sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: map-get($font-sizing, 'md');
+	color: map-get($colors, 'deep-blue');
 
 	#__next {
 		min-height: 100vh;

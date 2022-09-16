@@ -1,10 +1,22 @@
+.circle {
+	border-radius: 50%;
+}
+
+.inset {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
 @each $name, $hex in $colors {
-	.text-#{$name}, .hover\:text-#{$name} {
+	.text-#{$name}, .hover\:text-#{$name}:hover {
 		color: $hex;
 	}
 
-	.bg-#{$name}, .hover\:bg-#{$name} {
-		color: $hex;
+	.bg-#{$name}, .hover\:bg-#{$name}:hover {
+		background-color: $hex;
 	}
 }
 
@@ -14,14 +26,26 @@
 	}
 }
 
-@for $i from 1 to 13 {
+@for $i from 1 to 401 {
 	$spacing: $i * 4px;
+
+	.m-#{$i} {
+		margin: $spacing;
+	}
 
 	.mt-#{$i} {
 		margin-top: $spacing;
 	}
 	.mb-#{$i} {
 		margin-bottom: $spacing;
+	}
+	.my-#{$i} {
+		@extend .mt-#{$i}, .mb-#{$i};
+	}
+
+
+	.p-#{$i} {
+		padding: $spacing;
 	}
 
 	.pt-#{$i} {
@@ -30,16 +54,47 @@
 	.pb-#{$i} {
 		padding-bottom: $spacing;
 	}
+	.pl-#{$i} {
+		padding-left: $spacing;
+	}
+	.pr-#{$i} {
+		padding-right: $spacing;
+	}
+	.py-#{$i} {
+		@extend .pt-#{$i}, .pb-#{$i};
+	}
+	.px-#{$i} {
+		padding-left: $spacing;
+		padding-right: $spacing;
+	}
 
 	.gap-#{$i} {
 		gap: $spacing;
 	}
-
 	.x-gap-#{$i} {
 		column-gap: $spacing;
 	}
-
 	.y-gap-#{$i} {
 		row-gap: $spacing;
+	}
+
+	.w-#{$i} {
+		width: $spacing;
+	}
+	.max-w-#{$i} {
+		max-width: $spacing;
+	}
+	.min-w-#{$i} {
+		min-width: $spacing;
+	}
+
+	.h-#{$i} {
+		height: $spacing;
+	}
+	.max-h-#{$i} {
+		max-height: $spacing;
+	}
+	.min-h-#{$i} {
+		min-height: $spacing;
 	}
 }

@@ -1,0 +1,48 @@
+.input-text {
+	&__container{
+		@extend .flex-center-start, .gap-2,
+						.py-2, .px-4,
+						.bg-snow, .text-deep-blue;
+	
+		border: 1px solid map-get($colors, 'snow' );
+		border-radius: 4px;
+
+		&--active {
+			border-color: map-get($colors, 'primary' );
+		}	
+
+		&:not(&--active):hover {
+			border-color: map-get($colors, 'cool-gray' );
+		}
+	}	
+
+	&__label {
+		@extend .mb-1, .pl-1, .text-black;
+		display: block;
+		font-size: map-get($font-sizing, 'sm' );
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+
+	&__input {
+		color: inherit !important;
+		flex-grow: 1;
+		background-color: inherit;
+		border: none;
+		
+		&:active, &:focus {
+			outline: none;
+		}
+	}
+	
+	&__icon {
+		@extend .w-5;
+		color: inherit !important;
+	}
+
+	&__below-text {
+		@extend .mt-1, .pl-1, .text-cool-gray;
+		display: block;
+		font-size: map-get($font-sizing, 'sm' );
+	}
+}
