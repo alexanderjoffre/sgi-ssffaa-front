@@ -1,17 +1,13 @@
 import '../src/scss/main.scss';
 import type { AppProps } from 'next/app';
-import { useRouter } from 'next/router';
 import { AppContext } from '../src/contexts/App.context';
-import { idioms } from '../src/i18n/idioms';
+import { useState } from 'react';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const { locale } = useRouter();
-  const languagePack = idioms[`${locale}`];
+  const [accountToken, setAccountToken] = useState<string | null>(null)
 
   return (
-    <AppContext.Provider value={{
-      language: languagePack
-    }}>
+    <AppContext.Provider value={{ accountToken, setAccountToken }}>
       <Component {...pageProps} />
     </AppContext.Provider>
   );

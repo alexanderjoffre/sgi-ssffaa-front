@@ -17,7 +17,7 @@
 	}	
 
 	&__label {
-		@extend .mb-1, .pl-1, .text-black;
+		@extend .mb-1, .pl-1, .text-cool-gray;
 		display: block;
 		font-size: map-get($font-sizing, 'sm' );
 		font-weight: 500;

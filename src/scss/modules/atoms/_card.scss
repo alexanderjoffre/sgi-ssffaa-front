@@ -3,6 +3,7 @@ $AlertLightenAmoun: 32;
 
 .card {
 	@extend .p-5;
+	background-color: white;
 	
 	&--rounded {
 		border-radius: 8px;

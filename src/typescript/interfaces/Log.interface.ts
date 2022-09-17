@@ -1,14 +1,14 @@
 export interface ILog {
-
-	// Id for process traceability
+	// Tracking event ID
 	traceId: string;
 
 	// System event who triggers a log
 	event: string;
 
-	// Code method who triggers a log in format method:lineNumber
-	origin: string;
+	// IP where action was performed
+	ip: string;
 
-	// Code method who triggers a log in format method:lineNumber
-	payload: Record<string, string>;
+	// User account that made the action
+	account: string;
+	
 }

@@ -16,11 +16,11 @@ export class LoggerAdapter {
 			format: this._winston.format.json(),
 			defaultMeta: {
 				appId: process.env.NEXT_PUBLIC_APP_NAME,
-				created_at: dateAdapter.nowUTC(),
+				created_at: dateAdapter.now(),
 			},
 			transports: [
 				new this._winston.transports.File({ filename: 'error.log', level: 'error' }),
-				new this._winston.transports.File({ filename: 'system.log' }),
+				new this._winston.transports.File({ filename: 'sgi.log' }),
 			]
 		})
 	}
@@ -38,29 +38,29 @@ export class LoggerAdapter {
 	}
 
 	/**
-	 * Generate stfout on OS with info level
+	 * Generate stdout on OS with info level
 	 * @param content ILog
 	 * @param message string
 	 */
-	public info(content: ILog, message: string): void {
-		this._logger.info( message, content );
+	public info(content: ILog): void {
+		this._logger.info( 'SystemLogger', { level: 'info', ...content } );
 	}
 
 	/**
-	 * Generate stfout on OS with warning level
+	 * Generate stdout on OS with warning level
 	 * @param content ILog
 	 * @param message string
 	 */
-	public warning(content: ILog, message: string): void {
-		this._logger.warn( message, content );
+	public warning(content: ILog): void {
+		this._logger.warn( 'SystemLogger', { level: 'warning', ...content } );
 	}
 
 	/**
-	 * Generate stfout on OS with error level
+	 * Generate stdout on OS with error level
 	 * @param content ILog
 	 * @param message string
 	 */
-	public error(content: ILog, message: string): void {
-		this._logger.error( message, content );
+	public error(content: ILog): void {
+		this._logger.error( 'SystemLogger', { level: 'error', ...content } );
 	}
 }
