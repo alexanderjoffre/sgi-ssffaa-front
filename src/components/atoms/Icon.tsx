@@ -33,6 +33,7 @@ const icons: Map<string, any> = new Map([
 	[EIcon.FACE_GOOD, mdi.mdiEmoticonHappyOutline],
 	[EIcon.FACE_HAPPY, mdi.mdiEmoticonExcitedOutline],
 	[EIcon.INFO, mdi.mdiInformationOutline],
+	[EIcon.LOCK, mdi.mdiLock],
 	[EIcon.CONTEXT_MENU, mdi.mdiDotsVertical],
 	[EIcon.SEARCH, mdi.mdiMagnify],
 	[EIcon.SORT_ALPHABETHICAL, mdi.mdiUnfoldMoreHorizontal],
