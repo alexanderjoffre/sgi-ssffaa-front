@@ -12,30 +12,35 @@ import { Button } from '../src/components/molecules/Button';
 import { UserProvider } from '../src/providers/User.provider';
 import { HttpAdapter } from '../src/adapters/Http.adapter';
 import { UserSchema } from '../src/schemas/User.schema';
-import { LocalStorageHandler } from '../src/handlers/LocaStorage.handler';
+import { LocalStorageHandler } from '../src/handlers/LocalStorage.handler';
 import { AppContext } from '../src/contexts/App.context';
-
-const httpClient = new HttpAdapter(process.env.NEXT_PUBLIC_BFF_URL);
-const userProvider = new UserProvider(httpClient);
-const localStorage = new LocalStorageHandler();
 
 const Page: NextPage = () => {
   const router = useRouter();
-  const { setAccountToken } = useContext(AppContext);
+  const appContext = useContext(AppContext);
   
-  const [userAccount, setUserAccount] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [userAccount, setUserAccount] = useState<string>('ajoffre');
+  const [password, setPassword] = useState<string>('Aj0ffre,1992');
 
   const login = async () => {
-    try {
-      const user: UserSchema = await userProvider.login(userAccount, password);
-      localStorage.set('sgi-ssffaa-user-display-name', user.getDisplayName());
-      setAccountToken( user.getToken() );
+    appContext.setLoadingOverlay('Iniciando Sesión');
 
+    try {
+      const httpClient = new HttpAdapter(process.env.NEXT_PUBLIC_BFF_URL);
+      const userProvider = new UserProvider(httpClient);
+      const localStorage = LocalStorageHandler.getAdapter();
+
+      const user: UserSchema = await userProvider.login(userAccount, password);
+      localStorage.saveUser(user);
+
+      appContext.setLoadingOverlay(null);
       router.push(AppRoutes.home);
+      
     } catch (error) {
       console.log(error);
     }
+
+    appContext.setLoadingOverlay(null);
   }
 
   return (

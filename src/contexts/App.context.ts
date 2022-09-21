@@ -1,11 +1,10 @@
 import { createContext } from "react";
-
 interface AppContextStructure {
-	accountToken: string | null,
-	setAccountToken: (accountToken: string) => void
+	loadingOverlay: string | null;
+	setLoadingOverlay: (loadingOverlay: string | null) => void;
 }
 
 export const AppContext = createContext<AppContextStructure>({
-	accountToken: null,
-	setAccountToken: (accountToken: string) => {}
+	loadingOverlay: null,
+	setLoadingOverlay: (loadingOverlay: string | null) => {}
 });

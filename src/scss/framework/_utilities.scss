@@ -12,6 +12,12 @@
 	border-radius: 4px;
 }
 
+.text-crop {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 @each $name, $hex in $colors {
 	.text-#{$name}, .hover\:text-#{$name}:hover {
 		color: $hex;

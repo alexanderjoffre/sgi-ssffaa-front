@@ -1,5 +1,5 @@
 export enum EUserStatus {
-	ACTIVE = 'Activo',
-	INACTIVE = 'Inactivo',
-	SUSPENDED = 'Suspendido',
+	ACTIVE = 'ACTIVE',
+	DISABLED = 'DISABLED',
+	SUSPENDED = 'SUSPENDED',
 }

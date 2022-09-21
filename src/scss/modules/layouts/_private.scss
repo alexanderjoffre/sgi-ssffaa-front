@@ -1,0 +1,40 @@
+.private {
+
+	&__navbar {
+		@extend .py-4, .px-6;
+		width: 320px;
+		max-width: 320px;
+		height: 100vh;
+		background-color: white;
+		box-shadow: 8px 0 16px rgba(
+			map-get($colors, 'cool-gray' ), 
+			.15	
+		);
+
+		li {
+			border-bottom: 1px solid map-get($colors, 'light-gray' );
+
+			&:last-child { border: none; }
+			& > a {
+				@extend .p-3;
+				display: block;
+				transition: background-color .2s ease-in-out;
+
+				&:hover {
+					cursor: pointer;
+					background-color: map-get($colors, 'light-gray' );
+				}
+			}
+		}
+	}
+
+	&__navbar--heading {
+		@extend .flex-center-start, .gap-4, .text-cool-gray;
+	}
+
+	&__navbar-account {
+		@extend .text-cool-gray, .text-crop;
+		text-align: center;
+		font-weight: 500;
+	}
+}

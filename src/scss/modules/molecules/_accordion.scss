@@ -1,9 +1,6 @@
 .accordion {
-	@extend .px-2;
-
 	&__item-header {
-		@extend .text-cool-gray, .p-3;
-		border-top: 1px solid map-get($colors, 'gray' );
+		@extend .text-cool-gray, .py-3;
 
 		&:hover {
 			cursor: pointer;
@@ -12,20 +9,11 @@
 
 	&__item {
 		border-bottom: none;
-		
-		&:first-child {
-			& .accordion__item-header {
-				border-top: none;
-			}
-		}
 
 		&--expanded {
-			& .accordion__item-header {
-				border-bottom: 1px solid map-get($colors, 'gray' );
-			}
 
 			& .accordion__item-content {
-				@extend .py-6;
+				@extend .py-3;
 				height: auto;
 			}
 
@@ -41,13 +29,11 @@
 	}
 	
 	&__item-content {
-		@extend .px-6;
 		height: 0;
 		overflow: hidden;
 
-		transition: height .2s ease-in-out,
-								padding-top .2s ease-in-out,
-								padding-right .2s ease-in-out;
+		transition: height .5s ease-in-out,
+								padding-top .2s ease-in-out;
 	}
 
 }
